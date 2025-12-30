@@ -1,0 +1,75 @@
+% The Cyborg Developer - DIS 2026 Submission
+% Anonymous version for peer review
+
+\documentclass[manuscript,review,anonymous]{acmart}
+
+% Packages
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{amsmath}
+
+% Code listing style
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny\color{gray}
+}
+
+% Document metadata
+\title{The Cyborg Developer: Empirical Analysis of Cognitive Extension Through Human-AI Collaborative Programming}
+
+% Keywords
+\keywords{Human-AI Collaboration, Software Engineering, Cognitive Extension, Developer Tools, Empirical Study, Autoethnography}
+
+% CCS Concepts (required by ACM)
+\begin{CCSXML}
+<ccs2012>
+   <concept>
+       <concept_id>10003120.10003121.10003129</concept_id>
+       <concept_desc>Human-centered computing~Collaborative and social computing systems and tools</concept_desc>
+       <concept_significance>500</concept_significance>
+   </concept>
+   <concept>
+       <concept_id>10011007.10011006.10011008.10011009.10011012</concept_id>
+       <concept_desc>Software and its engineering~Empirical software validation</concept_desc>
+       <concept_significance>500</concept_significance>
+   </concept>
+   <concept>
+       <concept_id>10003120.10003121.10003125.10011752</concept_id>
+       <concept_desc>Human-centered computing~Empirical studies in HCI</concept_desc>
+       <concept_significance>300</concept_significance>
+   </concept>
+</ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Human-centered computing~Collaborative and social computing systems and tools}
+\ccsdesc[500]{Software and its engineering~Empirical software validation}
+\ccsdesc[300]{Human-centered computing~Empirical studies in HCI}
+
+\begin{document}
+
+\begin{abstract}
+AI coding assistants are transforming software development, yet empirical understanding of how developers integrate these tools into cognitive workflows remains limited. Through computational autoethnography, we analyze 802 collaborative sessions (85,370 messages, 27,672 tool invocations) across 47 projects over 30 days. Our analysis reveals: (1) High cognitive delegation---a delegation score of 0.71 indicates developers treat AI as cognitive extension, not mere autocomplete; (2) Intentional model selection---developers consciously match AI capability to task complexity, with 7.59$\times$ longer sessions for high-capability models; (3) Sustained collaboration intensity---2,846 messages per active day and 13.3 projects per week demonstrate deep integration; (4) Context-fluid operation---rapid switching between projects with minimal cognitive overhead; (5) Hierarchical tool usage---execution and exploration dominate, with planning emerging in complex tasks. We introduce \textit{Cyborg Cognition}---the integrated cognitive system formed when human direction-setting combines with AI information gathering and execution. This framework extends theories of distributed cognition to human-AI programming collaboration. Limitations include single-subject design; we provide sensitivity analyses and invite replication.
+\end{abstract}
+
+\maketitle
+
+% Include sections (anonymized versions)
+\input{sections/01-introduction-anon}
+\input{sections/02-related-work-anon}
+\input{sections/03-methodology-anon}
+\input{sections/04-findings}
+\input{sections/05-discussion-anon}
+\input{sections/06-conclusion-anon}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references-anon}
+
+\appendix
+\input{sections/appendix-anon}
+
+\end{document}

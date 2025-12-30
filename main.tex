@@ -1,0 +1,72 @@
+% The Cyborg Developer - Main Document
+% Target: CHI 2026 / CSCW 2026
+% Author: Anderson Henrique da Silva
+
+\documentclass[sigconf,screen]{acmart}
+
+% Packages
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{amsmath}
+
+% Remove ACM copyright for preprint
+\setcopyright{none}
+\renewcommand\footnotetextcopyrightpermission[1]{}
+\pagestyle{plain}
+
+% Fix date and conference info for preprint
+\acmYear{2025}
+\acmMonth{12}
+\acmDOI{}
+\acmConference[Preprint]{Preprint - Not yet peer reviewed}{December 2025}{Zenodo}
+\acmBooktitle{Preprint - December 2025}
+
+% Code listing style
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny\color{gray}
+}
+
+% Document metadata
+\title{The Cyborg Developer: Empirical Analysis of Cognitive Extension Through Human-AI Collaborative Programming}
+
+\author{Anderson Henrique da Silva}
+\orcid{0009-0001-7144-4974}
+\affiliation{
+  \institution{Instituto Federal de Educação, Ciência e Tecnologia do Sul de Minas Gerais (IFSULDEMINAS)}
+  \city{Minas Gerais}
+  \country{Brazil}
+}
+
+% Keywords
+\keywords{Human-AI Collaboration, Software Engineering, Cognitive Extension, Developer Tools, Empirical Study, Autoethnography}
+
+\begin{document}
+
+\begin{abstract}
+AI coding assistants are transforming software development, yet empirical understanding of how developers integrate these tools into cognitive workflows remains limited. Through computational autoethnography, we analyze 802 collaborative sessions (85,370 messages, 27,672 tool invocations) across 47 projects over 30 days. Our analysis reveals: (1) High cognitive delegation---a delegation score of 0.71 indicates developers treat AI as cognitive extension, not mere autocomplete; (2) Intentional model selection---developers consciously match AI capability to task complexity, with 7.59$\times$ longer sessions for high-capability models; (3) Sustained collaboration intensity---2,846 messages per active day and 13.3 projects per week demonstrate deep integration; (4) Context-fluid operation---rapid switching between projects with minimal cognitive overhead; (5) Hierarchical tool usage---execution and exploration dominate, with planning emerging in complex tasks. We introduce \textit{Cyborg Cognition}---the integrated cognitive system formed when human direction-setting combines with AI information gathering and execution. This framework extends theories of distributed cognition to human-AI programming collaboration. Limitations include single-subject design; we provide sensitivity analyses and invite replication.
+\end{abstract}
+
+\maketitle
+
+% Include sections
+\input{sections/01-introduction}
+\input{sections/02-related-work}
+\input{sections/03-methodology}
+\input{sections/04-findings}
+\input{sections/05-discussion}
+\input{sections/06-conclusion}
+\input{sections/07-visualizations}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\appendix
+\input{sections/appendix}
+
+\end{document}

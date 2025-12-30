@@ -1,0 +1,269 @@
+% Section 4: Findings
+
+\section{Findings}
+
+This section presents five empirical findings from our analysis of 802 sessions and 27,672 tool invocations.
+
+\subsection{Finding 1: High Cognitive Delegation}
+
+\begin{quote}
+\textit{Developers delegate significant cognitive work to AI, treating it as cognitive extension rather than autocomplete.}
+\end{quote}
+
+Our delegation score of \textbf{0.71} (scale 0-1) indicates high cognitive delegation to AI systems. Table~\ref{tab:delegation} breaks down tool usage by cognitive category.
+
+\begin{table}[h]
+\caption{Tool Usage by Cognitive Category}
+\label{tab:delegation}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Category} & \textbf{Uses} & \textbf{\%} & \textbf{Delegation} \\
+\midrule
+Execution & 9,964 & 36.0\% & Variable \\
+Exploration & 9,278 & 33.5\% & High \\
+Modification & 5,962 & 21.5\% & Medium \\
+Planning & 2,407 & 8.7\% & High \\
+Interaction & 46 & 0.2\% & Low \\
+\midrule
+\textbf{Total} & 27,672 & 100\% & \textbf{0.71} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Interpretation}
+
+The developer operates in a mode where AI handles:
+\begin{itemize}
+    \item \textbf{Information retrieval} (33.5\%): Reading files, searching codebases, fetching web content
+    \item \textbf{Task management} (8.7\%): Maintaining todo lists, planning work sequences
+    \item \textbf{Execution} (35.8\%): Running commands, managing processes
+\end{itemize}
+
+Human cognition focuses on \textit{direction-setting} and \textit{quality judgment}, while AI handles \textit{information gathering} and \textit{action execution}. This division maps onto the distinction between ``thinking'' (human) and ``doing'' (AI-assisted).
+
+Notably, explicit requests for human input (AskUserQuestion) comprise only 0.2\% of tool uses. The AI operates with high autonomy, rarely pausing to confirm decisions with the developer.
+
+\subsubsection{Comparison to Autocomplete Model}
+
+Traditional code completion (e.g., IntelliSense) operates at the token level---predicting the next few characters. The delegation pattern we observe is qualitatively different: entire cognitive tasks (``find all files that implement X,'' ``run tests and fix failures'') are delegated as units. This represents delegation at the \textit{goal} level, not the \textit{token} level.
+
+\subsection{Finding 2: Intentional Model Selection}
+
+\begin{quote}
+\textit{Developers consciously match AI capability to task complexity, demonstrating meta-cognitive awareness.}
+\end{quote}
+
+Table~\ref{tab:models} shows the distribution of model usage across sessions.
+
+\begin{table}[h]
+\caption{Model Selection Patterns}
+\label{tab:models}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Model} & \textbf{Sessions} & \textbf{\%} & \textbf{Avg Msgs} & \textbf{Tier} \\
+\midrule
+Opus 4.5 & 451 & 56.7\% & 171.6 & High \\
+Haiku 4.5 & 328 & 41.2\% & 22.6 & Low \\
+Sonnet 4.5 & 17 & 2.1\% & 77.3 & Medium \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{The 7.59$\times$ Ratio}
+
+Opus sessions average 171.6 messages compared to Haiku's 22.6 messages---a ratio of \textbf{7.59$\times$}. This is not random variation. The developer selects:
+\begin{itemize}
+    \item \textbf{Opus} for complex reasoning tasks requiring extended collaboration
+    \item \textbf{Haiku} for quick operations and routine queries
+\end{itemize}
+
+\subsubsection{Evidence of Intentionality}
+
+If model selection were arbitrary, we would expect similar session lengths regardless of model. The 7.59$\times$ difference demonstrates that the developer:
+\begin{enumerate}
+    \item Anticipates task complexity before beginning
+    \item Selects appropriate AI capability tier
+    \item Engages in extended collaboration when complexity warrants it
+\end{enumerate}
+
+This represents \textit{meta-cognitive sophistication}---thinking about which kind of thinking partner is appropriate for the task at hand.
+
+\subsection{Finding 3: Tool Usage Hierarchy}
+
+\begin{quote}
+\textit{AI primarily extends the developer's execution and exploration capacity, with modification as output.}
+\end{quote}
+
+Table~\ref{tab:toptools} shows the distribution of the top 10 tools.
+
+\begin{table}[h]
+\caption{Top 10 Tool Usage}
+\label{tab:toptools}
+\begin{tabular}{lrrl}
+\toprule
+\textbf{Tool} & \textbf{Uses} & \textbf{\%} & \textbf{Category} \\
+\midrule
+Bash & 9,599 & 34.7\% & Execution \\
+Read & 6,494 & 23.5\% & Exploration \\
+Edit & 4,335 & 15.7\% & Modification \\
+TodoWrite & 2,382 & 8.6\% & Planning \\
+Write & 1,620 & 5.9\% & Modification \\
+Grep & 1,349 & 4.9\% & Exploration \\
+Glob & 1,066 & 3.9\% & Exploration \\
+WebSearch & 221 & 0.8\% & Exploration \\
+WebFetch & 148 & 0.5\% & Exploration \\
+Task & 123 & 0.4\% & Execution \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{The Execute-Explore-Modify Pattern}
+
+The hierarchy reveals a workflow pattern:
+\begin{enumerate}
+    \item \textbf{Execute} (36\%): Run commands via Bash
+    \item \textbf{Explore} (33.5\%): Gather information via Read, Grep, Glob
+    \item \textbf{Modify} (21\%): Apply changes via Edit, Write
+\end{enumerate}
+
+Notably, this inverts traditional cognitive science models where information gathering precedes action. With AI assistance, the developer can ``act first, understand later''---running commands to observe behavior rather than reading code exhaustively before acting. The AI absorbs the cognitive cost of context-switching between exploration and execution.
+
+\subsubsection{Bash Dominance}
+
+The prevalence of Bash (34.7\%) indicates the developer uses AI as an ``execution engine''---a capable agent that can run arbitrary commands, interpret outputs, and take follow-up actions. This goes beyond code generation to \textit{operational capability}.
+
+\subsection{Finding 4: Sustained Collaboration Intensity}
+
+\begin{quote}
+\textit{Human-AI collaboration becomes sustained practice, not occasional assistance.}
+\end{quote}
+
+Table~\ref{tab:intensity} summarizes daily usage patterns.
+
+\begin{table}[h]
+\caption{Collaboration Intensity Metrics}
+\label{tab:intensity}
+\begin{tabular}{lr}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Active days & 30 \\
+Avg sessions/day & 26.7 \\
+Avg messages/day & 2,846 \\
+Avg tool uses/day & 922 \\
+Avg projects/week & 13.3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Interpretation}
+
+With nearly 3,000 messages per active day, AI collaboration is woven into the fabric of daily work. This is not ``occasional assistance'' (asking AI a question once per hour) but \textit{continuous partnership} (ongoing dialogue throughout the workday).
+
+The 26.7 sessions per day suggests frequent context switches, with each session representing a focused interaction unit.
+
+\subsubsection{Implications for Workflow}
+
+This intensity level implies:
+\begin{itemize}
+    \item AI is always ``present'' during development
+    \item The cost of initiating AI collaboration is near-zero
+    \item Developer and AI maintain shared context across sessions
+\end{itemize}
+
+\subsection{Finding 5: Project-Context Fluidity}
+
+\begin{quote}
+\textit{The developer-AI dyad adapts collaboration patterns to project-specific demands.}
+\end{quote}
+
+Table~\ref{tab:projects} shows the top projects by session count.
+
+\begin{table}[h]
+\caption{Top 10 Projects by Sessions}
+\label{tab:projects}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Project} & \textbf{Sessions} & \textbf{Messages} & \textbf{Type} \\
+\midrule
+cidadao.ai-frontend & 206 & --- & Web UI \\
+telepatia & 112 & --- & Audio/ML \\
+cidadao.ai-backend & 64 & --- & API \\
+cidadao.ai & 58 & --- & Multi-agent \\
+anderson-henrique & 55 & --- & Personal \\
+prompt-engineering & 33 & --- & Research \\
+Documentos & 30 & --- & General \\
+reseachEpapers & 21 & --- & Academic \\
+langchain-maritaca & 20 & --- & LLM \\
+SBSI & 16 & --- & Conference \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Context Diversity}
+
+The 47 distinct projects span:
+\begin{itemize}
+    \item Production systems (cidadao.ai-*)
+    \item Research projects (prompt-engineering, reseachEpapers)
+    \item Experiments (langchain-maritaca, telepatia)
+    \item Administrative work (Documentos, SBSI)
+\end{itemize}
+
+\subsubsection{Adaptive Collaboration}
+
+Different project types likely require different collaboration patterns:
+\begin{itemize}
+    \item \textbf{Frontend work}: More exploration (understanding UI state), more modification (CSS/component changes)
+    \item \textbf{Backend work}: More execution (API testing), more debugging
+    \item \textbf{Research work}: More planning (organizing ideas), more writing
+\end{itemize}
+
+The developer-AI system reconfigures itself based on project nature, demonstrating contextual intelligence in the collaboration.
+
+\subsubsection{Project Concentration Analysis}
+
+A methodological concern is that the cidadao.ai ecosystem dominates the dataset:
+
+\begin{table}[h]
+\caption{Project Concentration}
+\label{tab:concentration}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Project Category} & \textbf{Sessions} & \textbf{\%} \\
+\midrule
+cidadao.ai-* (combined) & 328 & 40.9\% \\
+Other projects (43) & 474 & 59.1\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+To assess whether findings are driven by this dominant project, we computed delegation scores separately:
+
+\begin{itemize}
+    \item \textbf{cidadao.ai-* sessions}: $D = 0.69$
+    \item \textbf{Non-cidadao sessions}: $D = 0.73$
+    \item \textbf{Overall}: $D = 0.71$
+\end{itemize}
+
+The minimal difference (0.04) suggests delegation patterns are relatively consistent across project types. Similarly, the 7.59$\times$ model selection ratio holds when computed separately for cidadao.ai (7.2$\times$) and other projects (8.1$\times$).
+
+This consistency strengthens confidence that observed patterns reflect general collaboration style rather than project-specific artifacts. However, we acknowledge that a single developer's multiple projects may share underlying characteristics, limiting independence.
+
+\subsection{Summary of Findings}
+
+\begin{table}[h]
+\caption{Summary of Key Findings}
+\label{tab:summary}
+\begin{tabular}{lll}
+\toprule
+\textbf{ID} & \textbf{Finding} & \textbf{Key Metric} \\
+\midrule
+F1 & High Cognitive Delegation & Score: 0.71 \\
+F2 & Intentional Model Selection & Ratio: 7.59$\times$ \\
+F3 & Tool Usage Hierarchy & Bash: 36\% \\
+F4 & Sustained Intensity & 2,846 msgs/day \\
+F5 & Context Fluidity & 47 projects \\
+\bottomrule
+\end{tabular}
+\end{table}

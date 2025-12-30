@@ -1,0 +1,138 @@
+% Appendix (Anonymized for review)
+
+\section{Dataset Availability}
+
+\subsection{Aggregated Data}
+
+Aggregated metrics, including session summaries, tool usage distributions, and temporal patterns, will be made available in a public repository upon paper acceptance.
+
+\subsection{Raw Interaction Logs}
+
+Raw JSONL interaction logs contain potentially sensitive project information (file paths, code snippets, proprietary logic). These will be available upon request with appropriate data use agreements after publication.
+
+\section{Tool Category Definitions}
+
+\subsection{Exploration Tools}
+Tools that gather information without modifying state:
+\begin{itemize}
+    \item \textbf{Read}: Read file contents
+    \item \textbf{Grep}: Search for patterns in files
+    \item \textbf{Glob}: Find files matching patterns
+    \item \textbf{WebSearch}: Search the web
+    \item \textbf{WebFetch}: Retrieve web page content
+    \item \textbf{LSP}: Language server queries (definitions, references)
+\end{itemize}
+
+\subsection{Modification Tools}
+Tools that change file contents:
+\begin{itemize}
+    \item \textbf{Write}: Create or overwrite files
+    \item \textbf{Edit}: Apply targeted edits to files
+    \item \textbf{MultiEdit}: Apply multiple edits in one operation
+    \item \textbf{NotebookEdit}: Edit Jupyter notebook cells
+\end{itemize}
+
+\subsection{Execution Tools}
+Tools that run commands or manage processes:
+\begin{itemize}
+    \item \textbf{Bash}: Execute shell commands
+    \item \textbf{Task}: Launch sub-agents for complex tasks
+    \item \textbf{TaskOutput}: Retrieve output from background tasks
+    \item \textbf{KillShell}: Terminate running processes
+\end{itemize}
+
+\subsection{Planning Tools}
+Tools that manage task state and workflow:
+\begin{itemize}
+    \item \textbf{TodoWrite}: Create and update task lists
+    \item \textbf{EnterPlanMode}: Begin structured planning
+    \item \textbf{ExitPlanMode}: Complete planning phase
+\end{itemize}
+
+\subsection{Interaction Tools}
+Tools that explicitly request human input:
+\begin{itemize}
+    \item \textbf{AskUserQuestion}: Pose questions to the developer
+\end{itemize}
+
+\section{Delegation Score Calculation}
+
+The delegation score $D$ is computed as a weighted average of tool category usage:
+
+\begin{equation}
+D = \frac{\sum_{c \in C} p_c \cdot w_c}{\sum_{c \in C} p_c}
+\end{equation}
+
+Where:
+\begin{itemize}
+    \item $C$ = set of tool categories
+    \item $p_c$ = percentage of tool uses in category $c$
+    \item $w_c$ = delegation weight for category $c$
+\end{itemize}
+
+Delegation weights:
+\begin{itemize}
+    \item Exploration: $w = 1.0$ (high delegation---AI gathers information)
+    \item Planning: $w = 1.0$ (high delegation---AI manages tasks)
+    \item Modification: $w = 0.5$ (medium---shared authorship)
+    \item Execution: $w = 0.5$ (variable---depends on command autonomy)
+    \item Interaction: $w = 0.0$ (low---human deciding)
+\end{itemize}
+
+For our dataset:
+\begin{align}
+D &= \frac{33.5 \times 1.0 + 8.7 \times 1.0 + 21.5 \times 0.5 + 35.8 \times 0.5 + 0.5 \times 0.0}{100} \\
+&= \frac{33.5 + 8.7 + 10.75 + 17.9 + 0}{100} \\
+&= \frac{70.85}{100} \\
+&= 0.71
+\end{align}
+
+\section{Model Tier Definitions}
+
+\begin{table}[h]
+\caption{Claude Model Tiers}
+\begin{tabular}{llll}
+\toprule
+\textbf{Model} & \textbf{Tier} & \textbf{Characteristics} & \textbf{Typical Use} \\
+\midrule
+Opus 4.5 & High & Complex reasoning, large context & Architecture, debugging \\
+Sonnet 4.5 & Medium & Balanced capability and speed & General development \\
+Haiku 4.5 & Low & Fast, efficient & Quick queries, routine \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Session JSONL Format}
+
+Each session is stored as a JSONL file with events:
+
+\begin{lstlisting}[caption={Sample JSONL event}]
+{
+  "type": "assistant",
+  "message": {
+    "role": "assistant",
+    "model": "claude-opus-4-5-20251101",
+    "content": [...],
+    "usage": {
+      "input_tokens": 1234,
+      "output_tokens": 567
+    }
+  },
+  "timestamp": "2025-12-30T10:15:00.000Z",
+  "sessionId": "abc-123-def",
+  "cwd": "/home/user/project"
+}
+\end{lstlisting}
+
+Tool invocations appear within message content:
+
+\begin{lstlisting}[caption={Tool use structure}]
+{
+  "type": "tool_use",
+  "id": "toolu_01ABC...",
+  "name": "Bash",
+  "input": {
+    "command": "npm test"
+  }
+}
+\end{lstlisting}

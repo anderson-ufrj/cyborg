@@ -1,0 +1,276 @@
+% Section 3: Methodology (Anonymized for review)
+
+\section{Methodology}
+
+This section describes our computational autoethnography approach, data collection infrastructure, and analysis framework.
+
+\subsection{Research Approach: Computational Autoethnography}
+
+We employ autoethnography---systematic self-study where the researcher is both subject and analyst---enhanced with computational data collection. This approach follows methodological traditions in developer cognition research \cite{silva2025dmmf}, extending reflexive analysis from historical artifacts to real-time interaction.
+
+\subsubsection{Rationale for Single-Subject Design}
+
+Single-subject studies are often criticized for limited generalizability. We argue this trade-off is appropriate for our research questions for three reasons:
+
+\begin{enumerate}
+    \item \textbf{Depth over breadth}: Multi-participant studies of AI coding assistants typically capture 1-2 hours of controlled use. Our longitudinal design captures 30 days of naturalistic, uncontrolled professional practice---approximately 150$\times$ more interaction time per subject.
+
+    \item \textbf{Complete instrumentation}: Full access to a single developer's interaction logs enables tool-level granularity impossible to obtain across multiple participants due to privacy and consent constraints.
+
+    \item \textbf{Ecological validity}: Unlike laboratory settings, our data reflects actual professional work across 47 real projects with genuine deadlines and quality requirements.
+\end{enumerate}
+
+The validity trade-off is explicit: we sacrifice claims about the ``average developer'' in favor of deep claims about how \textit{a} developer integrates AI into sustained professional practice. Future multi-participant studies can test whether patterns we identify generalize.
+
+\subsubsection{Researcher Positionality}
+
+The researcher is an independent software developer based in South America with 5+ years of professional experience. During the study period, the researcher worked on production systems (multi-agent AI platforms), research projects (academic papers), and exploratory prototypes. This diversity of project types enables analysis across different cognitive demands.
+
+The researcher was aware that interaction data would be analyzed, which could influence behavior (Hawthorne effect). We mitigate this concern by noting: (1) data collection was automatic and required no conscious effort during work; (2) the 30-day period is long enough for novelty effects to diminish; and (3) professional deadlines created genuine performance pressure regardless of observation.
+
+\subsection{Data Collection}
+
+\subsubsection{Instrumentation}
+
+Data was collected from Claude Code, an AI coding assistant that operates within the terminal environment. Claude Code stores complete interaction transcripts in a structured format:
+
+\begin{lstlisting}[caption={Session storage location}]
+~/.claude/projects/<project-hash>/<session-id>.jsonl
+\end{lstlisting}
+
+Each JSONL file contains chronologically ordered events including:
+\begin{itemize}
+    \item \textbf{User messages}: Developer inputs (queries, instructions, feedback)
+    \item \textbf{Assistant messages}: AI responses (text, reasoning, tool calls)
+    \item \textbf{Tool invocations}: Complete record of tool name, inputs, and outputs
+    \item \textbf{Metadata}: Timestamps, model selection, token usage, project context
+\end{itemize}
+
+Additionally, we implemented a \texttt{PostToolUse} hook that enriched each tool invocation with:
+\begin{itemize}
+    \item Tool category (exploration, modification, execution, planning, interaction)
+    \item Success/failure indicators
+    \item Token estimates
+    \item Context hints (file types, action patterns)
+    \item Quality score heuristics
+\end{itemize}
+
+\subsubsection{Collection Period}
+
+Data was collected over 30 active development days. ``Active'' is defined as days with at least one Claude Code session.
+
+\subsubsection{Dataset Summary}
+
+Table~\ref{tab:dataset} summarizes the collected data.
+
+\begin{table}[h]
+\caption{Dataset Summary}
+\label{tab:dataset}
+\begin{tabular}{lr}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Total sessions & 802 \\
+Total messages & 85,370 \\
+\quad User messages & 30,951 \\
+\quad Assistant messages & 54,419 \\
+Tool invocations & 27,672 \\
+Unique projects & 47 \\
+Active days & 30 \\
+Total input tokens & 7.4M \\
+Total output tokens & 9.2M \\
+Cache tokens & 4.98B \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Ethical Considerations}
+
+As autoethnography, this study involves only the researcher's data. No third-party data was collected. Project names are reported but no proprietary code is disclosed. The aggregated dataset will be made available; raw interaction logs containing potentially sensitive project details will be available upon request with appropriate data use agreements.
+
+\subsection{Operationalizing Cognition Through Behavioral Traces}
+
+A methodological concern is whether message counts and tool invocations can serve as proxies for cognitive processes. We defend this operationalization on three grounds:
+
+\textbf{Behavioral trace validity}: Cognitive science has a long tradition of inferring mental processes from observable behavior \cite{letovsky1987cognitive}. While we cannot directly observe ``thinking,'' we can observe its behavioral signatures. Each tool invocation represents a decision to delegate a cognitive function; each message represents an intention communicated to the AI partner. These are not mere keystrokes---they are choices that reflect underlying cognitive states and strategies.
+
+\textbf{Granularity advantage}: Unlike self-report measures (surveys, interviews), our behavioral data captures \textit{every} interaction without recall bias or social desirability effects. The developer cannot misremember how many times they used a search tool or which model they selected. This granularity reveals patterns invisible to introspection.
+
+\textbf{Ecological validity}: Our data comes from genuine professional work under real deadlines, not laboratory tasks. The cognitive strategies we observe are those the developer actually employs when producing real software---not reconstructed behavior in artificial settings.
+
+We acknowledge that behavioral traces are incomplete windows into cognition. Internal deliberation, uncertainty, and emotional states are not captured. However, our focus is specifically on \textit{human-AI cognitive distribution}---how cognitive labor is allocated between human and AI---which is directly observable through interaction patterns. We are measuring delegation behavior, not the full richness of human thought.
+
+\subsection{Analysis Framework}
+
+We analyze interactions across four complementary dimensions:
+
+\subsubsection{Temporal Analysis}
+
+Examining how AI usage patterns evolve over time:
+\begin{itemize}
+    \item Daily and weekly aggregation of sessions, messages, and tool uses
+    \item Trend analysis (increasing, stable, or decreasing intensity)
+    \item Peak usage identification
+\end{itemize}
+
+\subsubsection{Project Analysis}
+
+Comparing collaboration patterns across project contexts:
+\begin{itemize}
+    \item Per-project session counts and message volumes
+    \item Tool intensity (tool uses per message)
+    \item Primary model selection per project
+\end{itemize}
+
+\subsubsection{Cognitive Delegation Analysis}
+
+Quantifying how cognitive work is distributed between developer and AI. We categorize tools by cognitive function:
+
+\begin{table}[h]
+\caption{Tool Categories and Delegation Levels}
+\label{tab:tools}
+\begin{tabular}{lll}
+\toprule
+\textbf{Category} & \textbf{Tools} & \textbf{Delegation} \\
+\midrule
+Exploration & Read, Grep, Glob, WebSearch & High \\
+Modification & Write, Edit, MultiEdit & Medium \\
+Execution & Bash, Task & Variable \\
+Planning & TodoWrite, PlanMode & High \\
+Interaction & AskUserQuestion & Low \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The \textbf{Delegation Score} is computed as:
+
+\begin{equation}
+D = \frac{\sum_{c \in C} p_c \cdot w_c}{\sum_{c \in C} p_c}
+\end{equation}
+
+Where $p_c$ is the percentage of tool uses in category $c$, and $w_c$ is the delegation weight (1.0 for high, 0.5 for medium/variable, 0.0 for low). A score approaching 1.0 indicates high AI delegation; approaching 0.0 indicates human-heavy workflow.
+
+\subsubsection{Sensitivity Analysis}
+\label{sec:sensitivity}
+
+Because delegation weights are researcher-defined, we assess robustness through two approaches:
+
+\textbf{Bootstrap Confidence Interval}: We computed 10,000 bootstrap resamples of the 27,672 tool invocations and recalculated the delegation score for each. The 95\% confidence interval is [0.708, 0.713], indicating the score is robust to random sampling variation.
+
+\textbf{Weight Sensitivity Analysis}: We tested alternative weight schemes to assess dependence on researcher assumptions:
+
+\begin{table}[h]
+\caption{Delegation Score Sensitivity to Weight Assumptions}
+\label{tab:sensitivity}
+\begin{tabular}{llr}
+\toprule
+\textbf{Scheme} & \textbf{Description} & \textbf{Score} \\
+\midrule
+Base & Original weights (H=1.0, M=0.5, L=0.0) & 0.71 \\
+Conservative & Lower all weights (H=0.8, M=0.3, L=0.0) & 0.51 \\
+Liberal & Higher all weights (H=1.0, M=0.7, L=0.2) & 0.79 \\
+Binary & Only high vs low (H=1.0, M=0.0, L=0.0) & 0.42 \\
+Execution=High & Treat Bash as full delegation & 0.83 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The delegation score ranges from 0.42 to 0.83 depending on weight assumptions. Our base score of 0.71 represents a moderate assumption. The qualitative finding---substantial cognitive delegation to AI---holds across all reasonable weight schemes.
+
+\subsubsection{Model-Complexity Correlation}
+
+Analyzing the relationship between model selection and task characteristics:
+\begin{itemize}
+    \item Session length by model tier
+    \item Tool use intensity by model
+    \item Project diversity by model preference
+\end{itemize}
+
+Models are categorized into capability tiers:
+\begin{itemize}
+    \item \textbf{High}: Claude Opus 4.5 (complex reasoning)
+    \item \textbf{Medium}: Claude Sonnet 4.5 (balanced)
+    \item \textbf{Low}: Claude Haiku 4.5 (fast, routine)
+\end{itemize}
+
+\subsection{Comparative Data Sources}
+
+To contextualize our findings, we analyzed two additional data sources:
+
+\subsubsection{Claude.ai Web Conversations}
+
+We exported the same developer's Claude.ai (web interface) conversation history via Anthropic's data export feature. This provides within-subject comparison between:
+\begin{itemize}
+    \item \textbf{Tool-augmented mode}: Claude Code CLI with file operations, bash execution, and planning tools
+    \item \textbf{Conversational mode}: Claude.ai web interface with text-only interaction
+\end{itemize}
+
+\begin{table}[h]
+\caption{Claude.ai Web Export Summary}
+\label{tab:web}
+\begin{tabular}{lr}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Total conversations & 893 \\
+Total messages & 7,888 \\
+Period & Jan--Dec 2025 \\
+Avg messages/conversation & 8.8 \\
+Projects & 14 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{DevGPT Dataset (External Comparison)}
+
+We analyzed the DevGPT dataset \cite{tao2024devgpt}, which contains ChatGPT conversations shared on GitHub, Hacker News, and other platforms. This provides community-level baseline metrics.
+
+\begin{table}[h]
+\caption{DevGPT Dataset Summary}
+\label{tab:devgpt}
+\begin{tabular}{lr}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Total entries & 1,716 \\
+Valid conversations & 1,920 \\
+Total prompts & 6,979 \\
+Code snippets & 4,974 \\
+Avg prompts/conversation & 3.6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Key Comparative Metrics}
+
+Table~\ref{tab:comparison} summarizes the three data sources.
+
+\begin{table}[h]
+\caption{Cross-Source Comparison}
+\label{tab:comparison}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Source} & \textbf{Sessions} & \textbf{Messages} & \textbf{Avg/Session} \\
+\midrule
+Claude Code (CLI)$^*$ & 802 & 85,370 & \textbf{106.4} \\
+Claude.ai (Web) & 893 & 7,888 & 8.8 \\
+DevGPT (Community) & 1,920 & 13,958 & 7.3 \\
+\bottomrule
+\end{tabular}
+\smallskip
+\footnotesize{$^*$Weighted average across all model tiers. Per-model breakdown: Opus 171.6, Haiku 22.6, Sonnet 77.3 msgs/session.}
+\end{table}
+
+The \textbf{12.1$\times$} difference in session intensity between Claude Code and Claude.ai (same developer, same AI) suggests that the interaction modality---not just AI capability---fundamentally shapes collaboration patterns. The \textbf{14.6$\times$} difference versus DevGPT community average indicates either individual variation or the effect of tool-augmented workflows.
+
+\subsection{Limitations of Method}
+
+\begin{enumerate}
+    \item \textbf{Single subject}: Patterns may reflect individual style rather than general phenomena
+    \item \textbf{Specific tooling}: Claude Code interaction patterns may differ from Copilot, Cursor, or other tools
+    \item \textbf{Expertise level}: A senior developer's patterns may not generalize to novices
+    \item \textbf{Temporal scope}: 30 days may not capture longer-term evolution
+    \item \textbf{Observer effect}: Awareness of data collection could influence behavior
+\end{enumerate}
+
+We address these limitations through transparency about claims' scope and explicit invitation for replication studies with different subjects and tools.

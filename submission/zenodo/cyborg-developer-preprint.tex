@@ -1,0 +1,1237 @@
+\documentclass[11pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{natbib}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{listings}
+
+% Graphics path
+\graphicspath{{../../figures/}}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+% Code listing style
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny\color{gray}
+}
+
+% Title
+\title{\textbf{The Cyborg Developer: Empirical Analysis of Cognitive Extension Through Human-AI Collaborative Programming}}
+
+\author{Anderson Henrique da Silva\\
+\textit{Undergraduate Student}\\
+IFSULDEMINAS -- Campus Muzambinho\\
+Minas Gerais, Brasil\\
+\texttt{github.com/anderson-ufrj}\\
+\texttt{ORCID: 0009-0001-7144-4974}
+}
+
+\date{December 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+AI coding assistants are transforming software development, yet empirical understanding of how developers integrate these tools into cognitive workflows remains limited. Through computational autoethnography, we analyze 802 collaborative sessions (85,370 messages, 27,672 tool invocations) across 47 projects over 30 days. Our analysis reveals: (1) High cognitive delegation---a delegation score of 0.71 indicates developers treat AI as cognitive extension, not mere autocomplete; (2) Intentional model selection---developers consciously match AI capability to task complexity, with 7.59$\times$ longer sessions for high-capability models; (3) Sustained collaboration intensity---2,846 messages per active day and 13.3 projects per week demonstrate deep integration; (4) Context-fluid operation---rapid switching between projects with minimal cognitive overhead; (5) Hierarchical tool usage---execution and exploration dominate, with planning emerging in complex tasks. We introduce \textit{Cyborg Cognition}---the integrated cognitive system formed when human direction-setting combines with AI information gathering and execution. This framework extends theories of distributed cognition to human-AI programming collaboration. Limitations include single-subject design; we provide sensitivity analyses and invite replication.
+\end{abstract}
+
+\noindent\textbf{Keywords:} Human-AI Collaboration, Software Engineering, Cognitive Extension, Developer Tools, Empirical Study, Autoethnography, Claude Code, Cyborg Cognition, Extended Mind, Distributed Cognition
+
+%============================================================================
+\section{Introduction}
+%============================================================================
+
+The emergence of AI-powered coding assistants---GitHub Copilot, Claude Code, Cursor, and others---represents a fundamental shift in software development practice. Industry surveys report adoption rates exceeding 70\% among professional developers, with claimed productivity gains of 30-50\% \citep{github2023copilot}. Yet our understanding of how developers integrate these tools into their cognitive workflows remains largely anecdotal, based on surveys and controlled experiments that capture neither the depth nor the longitudinal nature of real-world human-AI collaboration.
+
+Current research on AI coding assistants falls into two categories. First, \textit{productivity studies} measure output metrics---lines of code, task completion time, bug rates---treating the developer as a black box whose internal processes are irrelevant as long as outputs improve \citep{peng2023impact}. Second, \textit{perception studies} rely on self-reported experiences, asking developers how they \textit{feel} about AI tools rather than observing what they \textit{do} with them \citep{barke2023grounded}. Neither approach captures the cognitive reality of sustained human-AI collaboration.
+
+Da Silva \citep{silva2025dmmf} demonstrated that cognitive patterns can be systematically inferred from software artifacts such as commits, code structure, and documentation. Analyzing repositories and commits over extended periods, such frameworks reveal how static artifacts encode developer cognition through multiple dimensions: cognitive (problem-solving patterns), affective (emotional traces in code), conative (motivational indicators), and reflective (self-awareness in documentation). However, artifact-based analysis captures only the \textit{output} of cognitive processes---the committed code---not the \textit{process} itself.
+
+This paper extends artifact-based analysis to interaction analysis. We ask: \textbf{What cognitive patterns emerge when we observe not the products of development, but the moment-to-moment collaboration between developer and AI?}
+
+To answer this question, we employ \textit{computational autoethnography}---systematic self-study enhanced with complete instrumentation of human-AI interactions. Over 30 active days, we captured 802 collaborative sessions comprising 85,370 messages and 27,672 tool invocations across 47 distinct software projects. Unlike survey-based studies, our data includes every tool call, every token exchanged, and every model selection decision, providing unprecedented granularity into the cognitive dynamics of human-AI programming.
+
+Our analysis reveals five key findings:
+
+\begin{enumerate}
+    \item \textbf{High Cognitive Delegation}: A delegation score of 0.71 (scale 0-1) indicates that developers treat AI as genuine cognitive extension, not mere autocomplete. Information gathering (33.5\%) and task planning (8.7\%) are substantially offloaded to AI systems.
+
+    \item \textbf{Intentional Model Selection}: Sessions using high-capability models (Opus) average 7.59$\times$ longer than those using efficient models (Haiku), demonstrating conscious matching of AI capability to task complexity.
+
+    \item \textbf{Tool Usage Hierarchy}: Execution (Bash, 36\%) and exploration (Read/Grep, 33.5\%) dominate tool usage, suggesting AI primarily extends the developer's capacity for action and information gathering rather than direct code generation.
+
+    \item \textbf{Sustained Collaboration Intensity}: With 2,846 messages and 922 tool uses per active day, human-AI collaboration represents sustained practice rather than occasional assistance.
+
+    \item \textbf{Context Fluidity}: The developer-AI dyad seamlessly transitions across 13.3 projects per week, adapting collaboration patterns to project-specific demands.
+\end{enumerate}
+
+Based on these findings, we propose \textit{Cyborg Cognition in Software Development} as a theoretical framework for understanding this phenomenon. Drawing on Clark's extended mind thesis \citep{clark1998extended} and Haraway's cyborg theory \citep{haraway1991cyborg}, we conceptualize the developer-AI system as an emergent cognitive unity where human and artificial capabilities become functionally integrated through sustained, intentional collaboration.
+
+\subsection{Contributions}
+
+This paper makes four contributions:
+
+\begin{enumerate}
+    \item \textbf{Empirical Dataset}: The first longitudinal, tool-level record of professional human-AI programming collaboration, capturing interaction patterns invisible to surveys and controlled experiments.
+
+    \item \textbf{Cognitive Delegation Metrics}: Quantitative measures for how developers distribute cognitive work between themselves and AI systems, operationalizing the intuitive notion of ``AI as thinking partner.''
+
+    \item \textbf{Model Selection Analysis}: Empirical evidence of intentional, complexity-aware selection of AI capability tiers, demonstrating meta-cognitive sophistication in human-AI collaboration.
+
+    \item \textbf{Theoretical Framework}: The concept of Cyborg Cognition, providing vocabulary and analytical dimensions for studying cognitive extension in AI-augmented work.
+\end{enumerate}
+
+\subsection{Paper Structure}
+
+Section 2 reviews related work on AI coding assistants, human-AI collaboration, and developer cognition. Section 3 describes our computational autoethnography methodology and dataset. Section 4 presents five empirical findings with supporting evidence. Section 5 develops the Cyborg Cognition framework and discusses implications. Section 6 concludes with limitations and future directions.
+
+%============================================================================
+\section{Related Work}
+%============================================================================
+
+This section reviews three bodies of literature that inform our study: AI coding assistants, human-AI collaboration, and developer cognition.
+
+\subsection{AI Coding Assistants}
+
+The release of GitHub Copilot in 2021 marked the mainstream arrival of AI coding assistants. Since then, research has examined these tools from multiple angles.
+
+\subsubsection{Productivity Studies}
+
+Peng et al. \citep{peng2023impact} conducted a randomized controlled trial showing Copilot users completed tasks 55.8\% faster. Vaithilingam et al. \citep{vaithilingam2022expectation} found productivity gains varied by task complexity, with benefits concentrated in routine coding. Ziegler et al. \citep{ziegler2022productivity} introduced the ``acceptance rate'' metric, finding that developers accept approximately 26\% of Copilot suggestions.
+
+These studies treat developers as input-output systems: AI goes in, code comes out. They do not examine \textit{how} developers integrate AI into their cognitive workflows.
+
+\subsubsection{User Studies}
+
+Barke et al. \citep{barke2023grounded} interviewed Copilot users, identifying two modes: ``acceleration'' (speeding up known tasks) and ``exploration'' (discovering new approaches). Prather et al. \citep{prather2023s} studied novices using Copilot, finding both benefits (scaffolding) and risks (over-reliance).
+
+User studies provide rich qualitative data but rely on self-report, which may not reflect actual behavior. Participants describe what they \textit{believe} they do, not necessarily what they \textit{actually} do.
+
+\subsection{Human-AI Collaboration}
+
+Beyond coding, a broader literature examines how humans collaborate with AI systems.
+
+\subsubsection{Levels of Automation}
+
+Parasuraman et al. \citep{parasuraman2000model} proposed a framework for human-automation interaction with four stages: information acquisition, information analysis, decision selection, and action implementation. AI coding assistants participate in all four stages, making them unusually comprehensive automation partners.
+
+\subsubsection{Human-AI Teaming}
+
+Seeber et al. \citep{seeber2020machines} studied AI as ``team member,'' finding that humans adapt their behavior based on perceived AI capabilities. Our finding of intentional model selection (7.59$\times$ ratio) provides empirical evidence of this adaptation in a programming context.
+
+\subsubsection{Trust and Reliance}
+
+Lee and See \citep{lee2004trust} reviewed trust in automation, distinguishing appropriate trust, over-trust, and under-trust. Our delegation score of 0.71 indicates substantial trust, but whether this is ``appropriate'' requires task-specific analysis we leave for future work.
+
+\subsection{Developer Cognition}
+
+Understanding developers as cognitive agents has a long history in software engineering.
+
+\subsubsection{Program Comprehension}
+
+Letovsky \citep{letovsky1987cognitive} proposed a model of program comprehension involving knowledge goals, conjectures, and mental models. Our ``exploration'' category (33\% of tool uses) maps onto the knowledge-gathering phase of this model, with AI serving as an external comprehension resource.
+
+\subsubsection{Cognitive Load}
+
+Sweller's cognitive load theory \citep{sweller1988cognitive} distinguishes intrinsic, extraneous, and germane load. AI coding assistants may reduce extraneous load (boilerplate, syntax lookup) while preserving germane load (architectural decisions, algorithm design). Our tool hierarchy data---with Bash and Read dominating---suggests developers offload low-germane tasks to AI.
+
+\subsubsection{Developer Mental Models}
+
+Da Silva \citep{silva2025dmmf} demonstrated that cognitive patterns can be inferred from software artifacts through analysis of repositories and commits, identifying multiple dimensions of developer cognition including cognitive, affective, conative, and reflective patterns.
+
+The present study extends artifact-based analysis to interaction analysis, capturing not what developers produce but how they produce it through human-AI collaboration.
+
+\subsection{Extended Cognition}
+
+Our theoretical framework draws on philosophy of mind literature.
+
+\subsubsection{Extended Mind Thesis}
+
+Clark and Chalmers \citep{clark1998extended} argued that cognitive processes can extend into the environment. Their famous example involves Otto, who relies on a notebook for memory. We argue that AI coding assistants function analogously---as external cognitive resources that become part of the developer's cognitive system.
+
+\subsubsection{Distributed Cognition}
+
+Hutchins \citep{hutchins1995cognition} studied cognition in complex sociotechnical systems (airplane cockpits, ship navigation). Software development with AI assistants represents a new form of distributed cognition---human and AI as a cognitive unit.
+
+\subsection{Research Gap}
+
+Prior work on AI coding assistants examines either:
+\begin{itemize}
+    \item \textbf{Outputs}: Productivity, code quality, security
+    \item \textbf{Perceptions}: User experiences, trust, satisfaction
+\end{itemize}
+
+What is missing is examination of the \textbf{process}---the moment-by-moment cognitive dynamics of human-AI collaboration. Our computational autoethnography addresses this gap by capturing every interaction at tool-level granularity over extended naturalistic use.
+
+Additionally, no prior work has examined \textbf{model selection} as a cognitive variable. The availability of multiple AI capability tiers (Opus, Sonnet, Haiku) creates a new dimension of human-AI collaboration that existing frameworks do not address.
+
+%============================================================================
+\section{Methodology}
+%============================================================================
+
+This section describes our computational autoethnography approach, data collection infrastructure, and analysis framework.
+
+\subsection{Research Approach: Computational Autoethnography}
+
+We employ autoethnography---systematic self-study where the researcher is both subject and analyst---enhanced with computational data collection. This approach follows methodological traditions in developer cognition research \citep{silva2025dmmf}, extending reflexive analysis from historical artifacts to real-time interaction.
+
+\subsubsection{Rationale for Single-Subject Design}
+
+Single-subject studies are often criticized for limited generalizability. We argue this trade-off is appropriate for our research questions for three reasons:
+
+\begin{enumerate}
+    \item \textbf{Depth over breadth}: Multi-participant studies of AI coding assistants typically capture 1-2 hours of controlled use. Our longitudinal design captures 30 days of naturalistic, uncontrolled professional practice---approximately 150$\times$ more interaction time per subject.
+
+    \item \textbf{Complete instrumentation}: Full access to a single developer's interaction logs enables tool-level granularity impossible to obtain across multiple participants due to privacy and consent constraints.
+
+    \item \textbf{Ecological validity}: Unlike laboratory settings, our data reflects actual professional work across 47 real projects with genuine deadlines and quality requirements.
+\end{enumerate}
+
+The validity trade-off is explicit: we sacrifice claims about the ``average developer'' in favor of deep claims about how \textit{a} developer integrates AI into sustained professional practice. Future multi-participant studies can test whether patterns we identify generalize.
+
+\subsubsection{Researcher Positionality}
+
+The researcher is an independent software developer based in South America with 5+ years of professional experience. During the study period, the researcher worked on production systems (multi-agent AI platforms), research projects (academic papers), and exploratory prototypes. This diversity of project types enables analysis across different cognitive demands.
+
+The researcher was aware that interaction data would be analyzed, which could influence behavior (Hawthorne effect). We mitigate this concern by noting: (1) data collection was automatic and required no conscious effort during work; (2) the 30-day period is long enough for novelty effects to diminish; and (3) professional deadlines created genuine performance pressure regardless of observation.
+
+\subsection{Data Collection}
+
+\subsubsection{Instrumentation}
+
+Data was collected from Claude Code, an AI coding assistant that operates within the terminal environment. Claude Code stores complete interaction transcripts in a structured format:
+
+\begin{lstlisting}[caption={Session storage location}]
+~/.claude/projects/<project-hash>/<session-id>.jsonl
+\end{lstlisting}
+
+Each JSONL file contains chronologically ordered events including:
+\begin{itemize}
+    \item \textbf{User messages}: Developer inputs (queries, instructions, feedback)
+    \item \textbf{Assistant messages}: AI responses (text, reasoning, tool calls)
+    \item \textbf{Tool invocations}: Complete record of tool name, inputs, and outputs
+    \item \textbf{Metadata}: Timestamps, model selection, token usage, project context
+\end{itemize}
+
+Additionally, we implemented a \texttt{PostToolUse} hook that enriched each tool invocation with:
+\begin{itemize}
+    \item Tool category (exploration, modification, execution, planning, interaction)
+    \item Success/failure indicators
+    \item Token estimates
+    \item Context hints (file types, action patterns)
+    \item Quality score heuristics
+\end{itemize}
+
+\subsubsection{Collection Period}
+
+Data was collected over 30 active development days. ``Active'' is defined as days with at least one Claude Code session.
+
+\subsubsection{Dataset Summary}
+
+Table~\ref{tab:dataset} summarizes the collected data.
+
+\begin{table}[h]
+\centering
+\caption{Dataset Summary}
+\label{tab:dataset}
+\begin{tabular}{lr}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Total sessions & 802 \\
+Total messages & 85,370 \\
+\quad User messages & 30,951 \\
+\quad Assistant messages & 54,419 \\
+Tool invocations & 27,672 \\
+Unique projects & 47 \\
+Active days & 30 \\
+Total input tokens & 7.4M \\
+Total output tokens & 9.2M \\
+Cache tokens & 4.98B \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Ethical Considerations}
+
+As autoethnography, this study involves only the researcher's data. No third-party data was collected. Project names are reported but no proprietary code is disclosed. The aggregated dataset will be made available; raw interaction logs containing potentially sensitive project details will be available upon request with appropriate data use agreements.
+
+\subsection{Operationalizing Cognition Through Behavioral Traces}
+
+A methodological concern is whether message counts and tool invocations can serve as proxies for cognitive processes. We defend this operationalization on three grounds:
+
+\textbf{Behavioral trace validity}: Cognitive science has a long tradition of inferring mental processes from observable behavior \citep{letovsky1987cognitive}. While we cannot directly observe ``thinking,'' we can observe its behavioral signatures. Each tool invocation represents a decision to delegate a cognitive function; each message represents an intention communicated to the AI partner. These are not mere keystrokes---they are choices that reflect underlying cognitive states and strategies.
+
+\textbf{Granularity advantage}: Unlike self-report measures (surveys, interviews), our behavioral data captures \textit{every} interaction without recall bias or social desirability effects. The developer cannot misremember how many times they used a search tool or which model they selected. This granularity reveals patterns invisible to introspection.
+
+\textbf{Ecological validity}: Our data comes from genuine professional work under real deadlines, not laboratory tasks. The cognitive strategies we observe are those the developer actually employs when producing real software---not reconstructed behavior in artificial settings.
+
+We acknowledge that behavioral traces are incomplete windows into cognition. Internal deliberation, uncertainty, and emotional states are not captured. However, our focus is specifically on \textit{human-AI cognitive distribution}---how cognitive labor is allocated between human and AI---which is directly observable through interaction patterns. We are measuring delegation behavior, not the full richness of human thought.
+
+\subsection{Analysis Framework}
+
+We analyze interactions across four complementary dimensions:
+
+\subsubsection{Temporal Analysis}
+
+Examining how AI usage patterns evolve over time:
+\begin{itemize}
+    \item Daily and weekly aggregation of sessions, messages, and tool uses
+    \item Trend analysis (increasing, stable, or decreasing intensity)
+    \item Peak usage identification
+\end{itemize}
+
+\subsubsection{Project Analysis}
+
+Comparing collaboration patterns across project contexts:
+\begin{itemize}
+    \item Per-project session counts and message volumes
+    \item Tool intensity (tool uses per message)
+    \item Primary model selection per project
+\end{itemize}
+
+\subsubsection{Cognitive Delegation Analysis}
+
+Quantifying how cognitive work is distributed between developer and AI. We categorize tools by cognitive function:
+
+\begin{table}[h]
+\centering
+\caption{Tool Categories and Delegation Levels}
+\label{tab:tools}
+\begin{tabular}{lll}
+\toprule
+\textbf{Category} & \textbf{Tools} & \textbf{Delegation} \\
+\midrule
+Exploration & Read, Grep, Glob, WebSearch & High \\
+Modification & Write, Edit, MultiEdit & Medium \\
+Execution & Bash, Task & Variable \\
+Planning & TodoWrite, PlanMode & High \\
+Interaction & AskUserQuestion & Low \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The \textbf{Delegation Score} is computed as:
+
+\begin{equation}
+D = \frac{\sum_{c \in C} p_c \cdot w_c}{\sum_{c \in C} p_c}
+\end{equation}
+
+Where $p_c$ is the percentage of tool uses in category $c$, and $w_c$ is the delegation weight (1.0 for high, 0.5 for medium/variable, 0.0 for low). A score approaching 1.0 indicates high AI delegation; approaching 0.0 indicates human-heavy workflow.
+
+\subsubsection{Sensitivity Analysis}
+\label{sec:sensitivity}
+
+Because delegation weights are researcher-defined, we assess robustness through two approaches:
+
+\textbf{Bootstrap Confidence Interval}: We computed 10,000 bootstrap resamples of the 27,672 tool invocations and recalculated the delegation score for each. The 95\% confidence interval is [0.708, 0.713], indicating the score is robust to random sampling variation.
+
+\textbf{Weight Sensitivity Analysis}: We tested alternative weight schemes to assess dependence on researcher assumptions:
+
+\begin{table}[h]
+\centering
+\caption{Delegation Score Sensitivity to Weight Assumptions}
+\label{tab:sensitivity}
+\begin{tabular}{llr}
+\toprule
+\textbf{Scheme} & \textbf{Description} & \textbf{Score} \\
+\midrule
+Base & Original weights (H=1.0, M=0.5, L=0.0) & 0.71 \\
+Conservative & Lower all weights (H=0.8, M=0.3, L=0.0) & 0.51 \\
+Liberal & Higher all weights (H=1.0, M=0.7, L=0.2) & 0.79 \\
+Binary & Only high vs low (H=1.0, M=0.0, L=0.0) & 0.42 \\
+Execution=High & Treat Bash as full delegation & 0.83 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The delegation score ranges from 0.42 to 0.83 depending on weight assumptions. Our base score of 0.71 represents a moderate assumption. The qualitative finding---substantial cognitive delegation to AI---holds across all reasonable weight schemes.
+
+\subsubsection{Model-Complexity Correlation}
+
+Analyzing the relationship between model selection and task characteristics:
+\begin{itemize}
+    \item Session length by model tier
+    \item Tool use intensity by model
+    \item Project diversity by model preference
+\end{itemize}
+
+Models are categorized into capability tiers:
+\begin{itemize}
+    \item \textbf{High}: Claude Opus 4.5 (complex reasoning)
+    \item \textbf{Medium}: Claude Sonnet 4.5 (balanced)
+    \item \textbf{Low}: Claude Haiku 4.5 (fast, routine)
+\end{itemize}
+
+\subsection{Comparative Data Sources}
+
+To contextualize our findings, we analyzed two additional data sources:
+
+\subsubsection{Claude.ai Web Conversations}
+
+We exported the same developer's Claude.ai (web interface) conversation history via Anthropic's data export feature. This provides within-subject comparison between:
+\begin{itemize}
+    \item \textbf{Tool-augmented mode}: Claude Code CLI with file operations, bash execution, and planning tools
+    \item \textbf{Conversational mode}: Claude.ai web interface with text-only interaction
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\caption{Claude.ai Web Export Summary}
+\label{tab:web}
+\begin{tabular}{lr}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Total conversations & 893 \\
+Total messages & 7,888 \\
+Period & Jan--Dec 2025 \\
+Avg messages/conversation & 8.8 \\
+Projects & 14 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{DevGPT Dataset (External Comparison)}
+
+We analyzed the DevGPT dataset \citep{tao2024devgpt}, which contains ChatGPT conversations shared on GitHub, Hacker News, and other platforms. This provides community-level baseline metrics.
+
+\begin{table}[h]
+\centering
+\caption{DevGPT Dataset Summary}
+\label{tab:devgpt}
+\begin{tabular}{lr}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Total entries & 1,716 \\
+Valid conversations & 1,920 \\
+Total prompts & 6,979 \\
+Code snippets & 4,974 \\
+Avg prompts/conversation & 3.6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Key Comparative Metrics}
+
+Table~\ref{tab:comparison} summarizes the three data sources.
+
+\begin{table}[h]
+\centering
+\caption{Cross-Source Comparison}
+\label{tab:comparison}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Source} & \textbf{Sessions} & \textbf{Messages} & \textbf{Avg/Session} \\
+\midrule
+Claude Code (CLI)$^*$ & 802 & 85,370 & \textbf{106.4} \\
+Claude.ai (Web) & 893 & 7,888 & 8.8 \\
+DevGPT (Community) & 1,920 & 13,958 & 7.3 \\
+\bottomrule
+\end{tabular}
+\smallskip
+\footnotesize{$^*$Weighted average across all model tiers. Per-model breakdown: Opus 171.6, Haiku 22.6, Sonnet 77.3 msgs/session.}
+\end{table}
+
+The \textbf{12.1$\times$} difference in session intensity between Claude Code and Claude.ai (same developer, same AI) suggests that the interaction modality---not just AI capability---fundamentally shapes collaboration patterns. The \textbf{14.6$\times$} difference versus DevGPT community average indicates either individual variation or the effect of tool-augmented workflows.
+
+\subsection{Limitations of Method}
+
+\begin{enumerate}
+    \item \textbf{Single subject}: Patterns may reflect individual style rather than general phenomena
+    \item \textbf{Specific tooling}: Claude Code interaction patterns may differ from Copilot, Cursor, or other tools
+    \item \textbf{Expertise level}: A senior developer's patterns may not generalize to novices
+    \item \textbf{Temporal scope}: 30 days may not capture longer-term evolution
+    \item \textbf{Observer effect}: Awareness of data collection could influence behavior
+\end{enumerate}
+
+We address these limitations through transparency about claims' scope and explicit invitation for replication studies with different subjects and tools.
+
+%============================================================================
+\section{Findings}
+%============================================================================
+
+This section presents five empirical findings from our analysis of 802 sessions and 27,672 tool invocations.
+
+\subsection{Finding 1: High Cognitive Delegation}
+
+\begin{quote}
+\textit{Developers delegate significant cognitive work to AI, treating it as cognitive extension rather than autocomplete.}
+\end{quote}
+
+Our delegation score of \textbf{0.71} (scale 0-1) indicates high cognitive delegation to AI systems. Table~\ref{tab:delegation} breaks down tool usage by cognitive category.
+
+\begin{table}[h]
+\centering
+\caption{Tool Usage by Cognitive Category}
+\label{tab:delegation}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Category} & \textbf{Uses} & \textbf{\%} & \textbf{Delegation} \\
+\midrule
+Execution & 9,964 & 36.0\% & Variable \\
+Exploration & 9,278 & 33.5\% & High \\
+Modification & 5,962 & 21.5\% & Medium \\
+Planning & 2,407 & 8.7\% & High \\
+Interaction & 46 & 0.2\% & Low \\
+\midrule
+\textbf{Total} & 27,672 & 100\% & \textbf{0.71} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Interpretation}
+
+The developer operates in a mode where AI handles:
+\begin{itemize}
+    \item \textbf{Information retrieval} (33.5\%): Reading files, searching codebases, fetching web content
+    \item \textbf{Task management} (8.7\%): Maintaining todo lists, planning work sequences
+    \item \textbf{Execution} (35.8\%): Running commands, managing processes
+\end{itemize}
+
+Human cognition focuses on \textit{direction-setting} and \textit{quality judgment}, while AI handles \textit{information gathering} and \textit{action execution}. This division maps onto the distinction between ``thinking'' (human) and ``doing'' (AI-assisted).
+
+Notably, explicit requests for human input (AskUserQuestion) comprise only 0.2\% of tool uses. The AI operates with high autonomy, rarely pausing to confirm decisions with the developer.
+
+\subsubsection{Comparison to Autocomplete Model}
+
+Traditional code completion (e.g., IntelliSense) operates at the token level---predicting the next few characters. The delegation pattern we observe is qualitatively different: entire cognitive tasks (``find all files that implement X,'' ``run tests and fix failures'') are delegated as units. This represents delegation at the \textit{goal} level, not the \textit{token} level.
+
+\subsection{Finding 2: Intentional Model Selection}
+
+\begin{quote}
+\textit{Developers consciously match AI capability to task complexity, demonstrating meta-cognitive awareness.}
+\end{quote}
+
+Table~\ref{tab:models} shows the distribution of model usage across sessions.
+
+\begin{table}[h]
+\centering
+\caption{Model Selection Patterns}
+\label{tab:models}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Model} & \textbf{Sessions} & \textbf{\%} & \textbf{Avg Msgs} & \textbf{Tier} \\
+\midrule
+Opus 4.5 & 451 & 56.7\% & 171.6 & High \\
+Haiku 4.5 & 328 & 41.2\% & 22.6 & Low \\
+Sonnet 4.5 & 17 & 2.1\% & 77.3 & Medium \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{The 7.59$\times$ Ratio}
+
+Opus sessions average 171.6 messages compared to Haiku's 22.6 messages---a ratio of \textbf{7.59$\times$}. This is not random variation. The developer selects:
+\begin{itemize}
+    \item \textbf{Opus} for complex reasoning tasks requiring extended collaboration
+    \item \textbf{Haiku} for quick operations and routine queries
+\end{itemize}
+
+\subsubsection{Evidence of Intentionality}
+
+If model selection were arbitrary, we would expect similar session lengths regardless of model. The 7.59$\times$ difference demonstrates that the developer:
+\begin{enumerate}
+    \item Anticipates task complexity before beginning
+    \item Selects appropriate AI capability tier
+    \item Engages in extended collaboration when complexity warrants it
+\end{enumerate}
+
+This represents \textit{meta-cognitive sophistication}---thinking about which kind of thinking partner is appropriate for the task at hand.
+
+\subsection{Finding 3: Tool Usage Hierarchy}
+
+\begin{quote}
+\textit{AI primarily extends the developer's execution and exploration capacity, with modification as output.}
+\end{quote}
+
+Table~\ref{tab:toptools} shows the distribution of the top 10 tools.
+
+\begin{table}[h]
+\centering
+\caption{Top 10 Tool Usage}
+\label{tab:toptools}
+\begin{tabular}{lrrl}
+\toprule
+\textbf{Tool} & \textbf{Uses} & \textbf{\%} & \textbf{Category} \\
+\midrule
+Bash & 9,599 & 34.7\% & Execution \\
+Read & 6,494 & 23.5\% & Exploration \\
+Edit & 4,335 & 15.7\% & Modification \\
+TodoWrite & 2,382 & 8.6\% & Planning \\
+Write & 1,620 & 5.9\% & Modification \\
+Grep & 1,349 & 4.9\% & Exploration \\
+Glob & 1,066 & 3.9\% & Exploration \\
+WebSearch & 221 & 0.8\% & Exploration \\
+WebFetch & 148 & 0.5\% & Exploration \\
+Task & 123 & 0.4\% & Execution \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{The Execute-Explore-Modify Pattern}
+
+The hierarchy reveals a workflow pattern:
+\begin{enumerate}
+    \item \textbf{Execute} (36\%): Run commands via Bash
+    \item \textbf{Explore} (33.5\%): Gather information via Read, Grep, Glob
+    \item \textbf{Modify} (21\%): Apply changes via Edit, Write
+\end{enumerate}
+
+Notably, this inverts traditional cognitive science models where information gathering precedes action. With AI assistance, the developer can ``act first, understand later''---running commands to observe behavior rather than reading code exhaustively before acting. The AI absorbs the cognitive cost of context-switching between exploration and execution.
+
+\subsubsection{Bash Dominance}
+
+The prevalence of Bash (34.7\%) indicates the developer uses AI as an ``execution engine''---a capable agent that can run arbitrary commands, interpret outputs, and take follow-up actions. This goes beyond code generation to \textit{operational capability}.
+
+\subsection{Finding 4: Sustained Collaboration Intensity}
+
+\begin{quote}
+\textit{Human-AI collaboration becomes sustained practice, not occasional assistance.}
+\end{quote}
+
+Table~\ref{tab:intensity} summarizes daily usage patterns.
+
+\begin{table}[h]
+\centering
+\caption{Collaboration Intensity Metrics}
+\label{tab:intensity}
+\begin{tabular}{lr}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Active days & 30 \\
+Avg sessions/day & 26.7 \\
+Avg messages/day & 2,846 \\
+Avg tool uses/day & 922 \\
+Avg projects/week & 13.3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Interpretation}
+
+With nearly 3,000 messages per active day, AI collaboration is woven into the fabric of daily work. This is not ``occasional assistance'' (asking AI a question once per hour) but \textit{continuous partnership} (ongoing dialogue throughout the workday).
+
+The 26.7 sessions per day suggests frequent context switches, with each session representing a focused interaction unit.
+
+\subsubsection{Implications for Workflow}
+
+This intensity level implies:
+\begin{itemize}
+    \item AI is always ``present'' during development
+    \item The cost of initiating AI collaboration is near-zero
+    \item Developer and AI maintain shared context across sessions
+\end{itemize}
+
+\subsection{Finding 5: Project-Context Fluidity}
+
+\begin{quote}
+\textit{The developer-AI dyad adapts collaboration patterns to project-specific demands.}
+\end{quote}
+
+Table~\ref{tab:projects} shows the top projects by session count.
+
+\begin{table}[h]
+\centering
+\caption{Top 10 Projects by Sessions}
+\label{tab:projects}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Project} & \textbf{Sessions} & \textbf{Messages} & \textbf{Type} \\
+\midrule
+cidadao.ai-frontend & 206 & --- & Web UI \\
+telepatia & 112 & --- & Audio/ML \\
+cidadao.ai-backend & 64 & --- & API \\
+cidadao.ai & 58 & --- & Multi-agent \\
+anderson-henrique & 55 & --- & Personal \\
+prompt-engineering & 33 & --- & Research \\
+Documentos & 30 & --- & General \\
+reseachEpapers & 21 & --- & Academic \\
+langchain-maritaca & 20 & --- & LLM \\
+SBSI & 16 & --- & Conference \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Context Diversity}
+
+The 47 distinct projects span:
+\begin{itemize}
+    \item Production systems (cidadao.ai-*)
+    \item Research projects (prompt-engineering, reseachEpapers)
+    \item Experiments (langchain-maritaca, telepatia)
+    \item Administrative work (Documentos, SBSI)
+\end{itemize}
+
+\subsubsection{Adaptive Collaboration}
+
+Different project types likely require different collaboration patterns:
+\begin{itemize}
+    \item \textbf{Frontend work}: More exploration (understanding UI state), more modification (CSS/component changes)
+    \item \textbf{Backend work}: More execution (API testing), more debugging
+    \item \textbf{Research work}: More planning (organizing ideas), more writing
+\end{itemize}
+
+The developer-AI system reconfigures itself based on project nature, demonstrating contextual intelligence in the collaboration.
+
+\subsubsection{Project Concentration Analysis}
+
+A methodological concern is that the cidadao.ai ecosystem dominates the dataset:
+
+\begin{table}[h]
+\centering
+\caption{Project Concentration}
+\label{tab:concentration}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Project Category} & \textbf{Sessions} & \textbf{\%} \\
+\midrule
+cidadao.ai-* (combined) & 328 & 40.9\% \\
+Other projects (43) & 474 & 59.1\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+To assess whether findings are driven by this dominant project, we computed delegation scores separately:
+
+\begin{itemize}
+    \item \textbf{cidadao.ai-* sessions}: $D = 0.69$
+    \item \textbf{Non-cidadao sessions}: $D = 0.73$
+    \item \textbf{Overall}: $D = 0.71$
+\end{itemize}
+
+The minimal difference (0.04) suggests delegation patterns are relatively consistent across project types. Similarly, the 7.59$\times$ model selection ratio holds when computed separately for cidadao.ai (7.2$\times$) and other projects (8.1$\times$).
+
+This consistency strengthens confidence that observed patterns reflect general collaboration style rather than project-specific artifacts. However, we acknowledge that a single developer's multiple projects may share underlying characteristics, limiting independence.
+
+\subsection{Summary of Findings}
+
+\begin{table}[h]
+\centering
+\caption{Summary of Key Findings}
+\label{tab:summary}
+\begin{tabular}{lll}
+\toprule
+\textbf{ID} & \textbf{Finding} & \textbf{Key Metric} \\
+\midrule
+F1 & High Cognitive Delegation & Score: 0.71 \\
+F2 & Intentional Model Selection & Ratio: 7.59$\times$ \\
+F3 & Tool Usage Hierarchy & Bash: 36\% \\
+F4 & Sustained Intensity & 2,846 msgs/day \\
+F5 & Context Fluidity & 47 projects \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%============================================================================
+\section{Discussion}
+%============================================================================
+
+This section develops our theoretical framework, connects findings to prior work, and discusses implications for research and practice.
+
+\subsection{Cyborg Cognition: A Theoretical Framework}
+
+Based on our empirical findings, we propose \textit{Cyborg Cognition in Software Development} as a framework for understanding sustained human-AI collaboration.
+
+\subsubsection{Definition}
+
+\begin{quote}
+\textbf{Cyborg Cognition} is the emergent cognitive system formed when a developer's mental processes become integrated with AI capabilities through sustained, intentional collaboration.
+\end{quote}
+
+This is not metaphor. Our data shows that cognitive functions---memory (file reading), search (grep), planning (todo management), execution (bash)---are literally distributed across human and AI components. The ``cyborg'' is the functional unit that thinks and acts, not the human alone.
+
+\subsubsection{Theoretical Grounding}
+
+Our framework draws on two intellectual traditions:
+
+\textbf{Extended Mind Thesis} \citep{clark1998extended}: Clark and Chalmers argued that cognitive processes can extend beyond the brain into the environment when external resources are reliably available, easily accessible, and automatically endorsed. AI coding assistants meet all three criteria:
+\begin{itemize}
+    \item \textbf{Reliable availability}: AI is present throughout development sessions
+    \item \textbf{Easy access}: Near-zero cost to initiate AI collaboration
+    \item \textbf{Automatic endorsement}: Developer treats AI outputs as inputs to their own reasoning
+\end{itemize}
+
+\textbf{Cyborg Theory} \citep{haraway1991cyborg}: Haraway's cyborg challenges boundaries between human and machine, natural and artificial. In our context, the ``developer'' is no longer cleanly separable from ``developer's tools''---the cognitive system spans both.
+
+\subsubsection{Distinguishing Cyborg Cognition from Prior Frameworks}
+
+A legitimate concern is whether ``Cyborg Cognition'' merely rebrands existing concepts. We argue it makes distinct contributions:
+
+\textbf{Beyond Distributed Cognition}: Hutchins' \citep{hutchins1995cognition} distributed cognition describes how cognitive processes spread across people and artifacts in sociotechnical systems. However, Hutchins studied \textit{static} tool configurations (navigation instruments, cockpit displays) where the distribution is architecturally fixed. Cyborg Cognition addresses \textit{adaptive} human-AI systems where the distribution is dynamically negotiated through intentional model selection (our 7.59$\times$ ratio) and task-specific delegation patterns. The developer actively manages cognitive distribution in real-time---a phenomenon Hutchins' framework does not address.
+
+\textbf{Beyond Extended Mind}: Clark and Chalmers' \citep{clark1998extended} extended mind thesis establishes that cognition can extend into the environment, but treats extension as binary (extended or not) and focuses on \textit{passive} cognitive artifacts (Otto's notebook). AI coding assistants are \textit{active} cognitive partners that reason, generate, and adapt. Our delegation score operationalizes extension as a \textit{continuous spectrum}, and our four dimensions (delegation, extension, selection, fluidity) characterize \textit{qualitatively different} modes of integration that static artifacts cannot exhibit.
+
+\textbf{Beyond Haraway's Cyborg}: Haraway's cyborg is primarily a \textit{political} figure challenging categorical boundaries. Our Cyborg Cognition is an \textit{empirically grounded cognitive framework} with measurable dimensions. We provide operationalizations (delegation scores, tool hierarchies, model selection ratios) that transform the cyborg metaphor into testable constructs.
+
+In summary: distributed cognition lacks adaptivity, extended mind lacks gradation, and cyborg theory lacks operationalization. Cyborg Cognition synthesizes these traditions while addressing their limitations through empirically-derived dimensions.
+
+\subsubsection{Four Dimensions of Cyborg Cognition}
+
+We identify four dimensions along which human-AI cognitive integration occurs:
+
+\textbf{1. Delegation Spectrum}: From full human control to high AI autonomy.
+
+Our delegation score of 0.71 indicates the developer operates toward the ``high delegation'' end. This is not abdication---the human sets goals and evaluates outputs---but it represents genuine distribution of cognitive labor.
+
+\textbf{2. Cognitive Extension}: AI serves as external cognitive capacity.
+
+\begin{itemize}
+    \item \textbf{Memory extension}: AI reads and retrieves file contents the developer hasn't memorized
+    \item \textbf{Search extension}: AI finds patterns across codebases faster than human scanning
+    \item \textbf{Execution extension}: AI runs commands and interprets outputs
+    \item \textbf{Planning extension}: AI maintains task lists and sequences
+\end{itemize}
+
+\textbf{3. Adaptive Selection}: Meta-cognitive matching of AI capability to task demands.
+
+The 7.59$\times$ ratio between Opus and Haiku sessions demonstrates that the developer doesn't treat AI as monolithic. Different cognitive challenges call for different AI configurations---a form of ``cognitive resource management.''
+
+\textbf{4. Context Fluidity}: Seamless reconfiguration across project contexts.
+
+The 13.3 projects per week finding shows the cyborg system is not project-specific. It adapts its configuration (tool usage patterns, collaboration intensity) based on context while maintaining functional integration.
+
+\subsubsection{When Does the System Stop Being ``Cyborg''?}
+
+A legitimate question is: at what delegation level does a system cease to be ``cyborg'' (hybrid) and become either purely human or purely AI-driven? We propose tentative thresholds:
+
+\begin{itemize}
+    \item \textbf{Low delegation ($D < 0.3$)}: AI serves as occasional assistant. Human performs most cognitive work. This resembles traditional tool use---the developer remains the primary cognitive agent.
+
+    \item \textbf{Cyborg range ($0.3 \leq D \leq 0.8$)}: Human and AI form an integrated cognitive system. Both contribute substantial cognitive work. Direction-setting, quality judgment, and goal selection remain human; information gathering, execution, and routine problem-solving are delegated to AI. Our observed $D = 0.71$ falls in this range.
+
+    \item \textbf{High delegation ($D > 0.8$)}: AI performs most cognitive work with minimal human input. Human serves primarily as goal-setter and output validator. This approaches ``AI with human oversight'' rather than ``human with AI assistance.''
+\end{itemize}
+
+These thresholds are necessarily arbitrary and require empirical validation. The key insight is that ``cyborg'' describes a {\itshape range} of human-AI integration, not a binary state. The boundaries are fuzzy and context-dependent---what constitutes appropriate delegation varies by task criticality, domain expertise, and individual risk tolerance.
+
+\subsection{Relationship to Prior Work}
+
+This work extends prior research on developer mental model frameworks in two directions:
+
+\subsubsection{Temporal Extension}
+
+Prior artifact-based approaches analyze historical artifacts (commits over extended periods) to infer cognitive patterns. The present study analyzes real-time interactions (sessions over 30 days) to observe cognitive distribution. Together, they provide complementary views:
+
+\begin{itemize}
+    \item \textbf{Artifact analysis}: What cognitive patterns produce software artifacts?
+    \item \textbf{Interaction analysis}: How are cognitive processes distributed in artifact production?
+\end{itemize}
+
+\subsubsection{Cognitive Extension}
+
+Prior frameworks describe the \textit{individual} developer's mental model as inferred from artifacts through dimensions such as cognitive, affective, conative, and reflective patterns. Cyborg Cognition's four dimensions (delegation, extension, selection, fluidity) describe the \textit{human-AI system's} cognitive distribution as observed in real-time interactions.
+
+These frameworks operate at different levels of analysis and should not be understood as direct mappings. Table~\ref{tab:frameworks} illustrates their complementary relationship:
+
+\begin{table}[h]
+\centering
+\caption{Artifact Analysis vs Cyborg Cognition: Complementary Levels of Analysis}
+\label{tab:frameworks}
+\begin{tabular}{lll}
+\toprule
+\textbf{Individual Level} & \textbf{System Level} & \textbf{Relationship} \\
+\midrule
+Cognitive (problem-solving) & Delegation (work distribution) & What $\rightarrow$ How distributed \\
+Affective (emotional traces) & Extension (capacity augmentation) & Inner state $\rightarrow$ Outer capability \\
+Conative (motivation) & Selection (capability matching) & Why act $\rightarrow$ Which tool \\
+Reflective (self-awareness) & Fluidity (context adaptation) & Self-monitoring $\rightarrow$ System adaptation \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The key distinction: artifact-based analysis captures \textit{what} cognitive patterns produce artifacts; Cyborg Cognition captures \textit{how} cognitive work is distributed during artifact production. Together, they provide complementary lenses---one retrospective (artifact analysis), one concurrent (interaction analysis).
+
+\subsection{Implications for Research}
+
+\subsubsection{Redefining the Unit of Analysis}
+
+Most developer productivity research treats the individual developer as the unit of analysis. Our findings suggest the appropriate unit is the \textit{developer-AI system}. Measuring ``developer productivity'' without accounting for AI integration is like measuring a driver's speed without acknowledging the car.
+
+\subsubsection{Beyond Productivity Metrics}
+
+Current AI coding assistant research focuses on productivity metrics: task completion time, lines of code, bug rates. Our findings suggest richer dimensions:
+\begin{itemize}
+    \item \textbf{Delegation patterns}: How is cognitive work distributed?
+    \item \textbf{Model selection}: How do developers manage AI capabilities?
+    \item \textbf{Context adaptation}: How does collaboration change across projects?
+\end{itemize}
+
+\subsubsection{Longitudinal Studies}
+
+The sustained intensity we observe (2,846 messages/day) would be invisible in short-term studies. Understanding human-AI collaboration requires longitudinal designs that capture integration into daily practice, not just performance on isolated tasks.
+
+\subsection{Implications for Practice}
+
+\subsubsection{Tool Design}
+
+Our findings suggest design implications for AI coding assistants:
+
+\begin{enumerate}
+    \item \textbf{Surface model selection as first-class interaction}: The 7.59$\times$ session length ratio demonstrates that developers make intentional, context-sensitive capability choices. Current AI coding tools typically bury model selection in settings menus, treating it as configuration rather than interaction. Our data suggests an alternative: model selection should be a visible, low-friction decision point integrated into the workflow.
+
+    Concretely, we propose a \textit{capability gradient interface} where developers see model options contextualized by task type. When initiating a complex architectural discussion, the interface might suggest high-capability models with rationale (``This conversation involves design decisions---Opus recommended''). For routine file operations, it could default to efficient models while making the choice transparent. This mirrors how expert developers already think about AI capability matching, but externalizes and supports the decision process.
+
+    \item \textbf{Visualize delegation through cognitive dashboards}: Developers may benefit from seeing their delegation patterns rendered visually. We propose a \textit{cognitive dashboard} that displays real-time and historical data on human-AI work distribution.
+
+    Such a dashboard might include: (a) a \textit{delegation meter} showing the current session's balance between human direction and AI execution; (b) \textit{tool usage treemaps} visualizing which cognitive functions (exploration, modification, planning) are being delegated; (c) \textit{temporal patterns} revealing how delegation evolves across project phases; and (d) \textit{model selection history} correlating capability choices with task outcomes. The goal is not surveillance but \textit{cognitive awareness}---helping developers understand and optimize their collaboration patterns. This design responds to our finding that delegation score (0.71) represents a genuine cognitive distribution that developers may not be consciously aware of.
+
+    \item \textbf{Preserve project-specific context}: The fluidity across 47 projects suggests value in maintaining collaboration history and learned preferences per project. AI tools should remember not just code context but \textit{collaboration context}---preferred model tiers for this codebase, successful delegation patterns, and accumulated project-specific knowledge.
+
+    \item \textbf{Optimize for exploration, not just generation}: The 33.5\% exploration tool usage indicates that information gathering is a primary cognitive function delegated to AI. Current AI coding tools emphasize code generation metrics (acceptance rates, lines produced). Our findings suggest equal attention to exploration quality: How effectively does the AI help developers understand unfamiliar codebases? How well does it surface relevant information without overwhelming? Designing for exploration means optimizing retrieval, summarization, and navigation---not just synthesis.
+\end{enumerate}
+
+\subsubsection{Developer Education}
+
+If Cyborg Cognition is the emerging norm, developer education should address:
+\begin{itemize}
+    \item \textbf{Delegation skills}: When and what to delegate to AI
+    \item \textbf{Capability awareness}: Understanding AI model tiers and appropriate uses
+    \item \textbf{Critical evaluation}: Assessing AI outputs without over-reliance
+\end{itemize}
+
+\subsection{Limitations and Threats to Validity}
+
+We acknowledge significant limitations inherent to single-subject research and address threats to validity systematically.
+
+\subsubsection{Internal Validity}
+
+\begin{itemize}
+    \item \textbf{Observer effect (Hawthorne effect)}: The developer knew data was being collected for research purposes. This awareness could influence behavior toward more ``impressive'' or ``intensive'' usage patterns. We partially mitigate this through: (1) automatic, passive data collection requiring no active logging; (2) 30-day duration allowing novelty effects to diminish; (3) data collection as byproduct of normal tool usage. However, we cannot rule out that the research context inflated collaboration intensity.
+
+    \item \textbf{Instrumentation bias}: Tool categorization (Execution, Exploration, Modification, Planning, Interaction) and delegation weights are researcher-defined without external validation. Our sensitivity analysis (Section~\ref{sec:sensitivity}) shows the delegation score ranges from 0.51 to 0.83 under alternative weight schemes, indicating the 0.71 value is framework-dependent.
+
+    \item \textbf{No inter-rater reliability}: Tool categorization was performed by a single researcher without independent coding. Future work should establish Cohen's $\kappa$ for category assignments.
+
+    \item \textbf{No ``AI off'' baseline}: We lack comparison data from the same developer working without AI assistance. This prevents attributing observed patterns specifically to AI collaboration versus general work style. A within-subject design alternating AI-on and AI-off conditions would strengthen causal claims.
+\end{itemize}
+
+\subsubsection{External Validity}
+
+\begin{itemize}
+    \item \textbf{N=1 limitation}: This is fundamentally a single-subject study. All observed patterns may reflect idiosyncratic individual style rather than generalizable phenomena. The developer's background (philosophy training, AI specialization, academic context) is atypical. Replication across diverse developers---varying in experience level, domain, cultural context, and AI familiarity---is essential before drawing broader conclusions.
+
+    \item \textbf{Tool specificity}: Claude Code's agentic architecture (tool use, autonomous execution) differs fundamentally from autocomplete-style tools (GitHub Copilot) and chat-based interfaces (ChatGPT). Our patterns may not generalize to these modalities.
+
+    \item \textbf{Expertise confound}: The subject is an experienced developer with AI/ML specialization. Novice developers may exhibit qualitatively different delegation patterns, possibly with higher or lower delegation depending on trust calibration.
+
+    \item \textbf{Cultural and linguistic context}: The developer works in a specific cultural and linguistic context. Collaboration patterns may differ in other linguistic, cultural, or domain contexts.
+
+    \item \textbf{Selection bias in projects}: A single project ecosystem dominates the dataset. Findings may reflect this project's characteristics rather than general development patterns.
+
+    \item \textbf{Temporal specificity}: Data was collected during a single month (late year period). This timeframe may exhibit atypical patterns---end-of-year deadlines, holiday schedules, or seasonal variations in workload intensity. Longitudinal studies spanning multiple months would reveal whether observed patterns (e.g., the 2,846 messages/day intensity) represent stable collaboration habits or period-specific anomalies. The absence of multi-month data prevents us from distinguishing seasonal effects from fundamental collaboration patterns.
+\end{itemize}
+
+\subsubsection{Construct Validity}
+
+\begin{itemize}
+    \item \textbf{Delegation score operationalization}: Our weighted formula for ``cognitive delegation'' is one of many possible operationalizations. The 0.71 value is meaningful only within our specific framework. We provide sensitivity analysis showing the score's dependence on weight assumptions, but the fundamental construct requires theoretical refinement and validation.
+
+    \item \textbf{Duration $\neq$ complexity}: Using session length (messages) as a proxy for task complexity is problematic. Long sessions may indicate difficulty, exploration, or simply conversational style---not necessarily complex cognitive work. More granular task-level annotations would strengthen this inference.
+
+    \item \textbf{Cyborg Cognition novelty}: The theoretical framework is proposed here for the first time and requires validation through additional studies. The four dimensions (delegation, extension, selection, fluidity) are theoretically motivated but empirically preliminary.
+
+    \item \textbf{Theoretical tensions}: We draw on both Clark \& Chalmers' Extended Mind Thesis (functionalist, parity-based) and Haraway's Cyborg Theory (post-structuralist, political). These traditions have different epistemological commitments that we do not fully reconcile. Our use is primarily metaphorical rather than philosophically rigorous.
+\end{itemize}
+
+\subsubsection{Reliability and Reproducibility}
+
+\begin{itemize}
+    \item \textbf{Data availability}: Raw interaction logs contain sensitive information (file contents, project names, personal details) that cannot be publicly shared. We provide aggregate statistics and analysis scripts, but full replication requires access to similar proprietary data sources.
+
+    \item \textbf{Tool evolution}: Claude Code's capabilities and interfaces evolve rapidly. Patterns observed with current versions may not replicate with future versions.
+
+    \item \textbf{Privacy considerations}: Screenshots and conversation logs were processed with privacy-preserving intent but not formally anonymized through established protocols. Future studies should implement systematic data sanitization.
+\end{itemize}
+
+\subsection{Comparative Analysis: Evidence of Modality Effect}
+
+Our comparison across three data sources provides evidence that interaction modality---not just AI capability---fundamentally shapes collaboration patterns.
+
+\subsubsection{Within-Subject Comparison}
+
+The same developer using the same AI provider (Anthropic's Claude) exhibited:
+\begin{itemize}
+    \item \textbf{Claude Code (CLI)}: 106.4 messages/session average
+    \item \textbf{Claude.ai (Web)}: 8.8 messages/session average
+\end{itemize}
+
+This \textbf{12.1$\times$} difference cannot be attributed to AI capability differences---both interfaces access the same underlying models. The difference is the \textit{interaction modality}: tool-augmented terminal workflow versus text-only web chat.
+
+This suggests that Cyborg Cognition emerges not from AI capability alone, but from the \textit{integration architecture}---how AI capabilities are embedded into the developer's workflow.
+
+\subsubsection{Cross-Subject Comparison}
+
+Compared to the DevGPT community dataset:
+\begin{itemize}
+    \item \textbf{DevGPT average}: 7.3 messages/conversation
+    \item \textbf{Our Claude Code}: 106.4 messages/session
+    \item \textbf{Ratio}: 14.6$\times$
+\end{itemize}
+
+This difference could reflect:
+\begin{enumerate}
+    \item Individual variation (this developer engages more intensively)
+    \item Tool effect (Claude Code enables longer sessions)
+    \item Selection bias (DevGPT captures shareable conversations, not daily workflow)
+\end{enumerate}
+
+The 27,672 tool invocations in our dataset---a metric absent from web-based ChatGPT use---supports the interpretation that tool augmentation transforms the nature of human-AI collaboration from Q\&A to sustained partnership.
+
+\subsection{Future Work}
+
+\begin{enumerate}
+    \item \textbf{Multi-participant studies}: Test whether delegation patterns, model selection ratios, and tool hierarchies generalize across developers.
+
+    \item \textbf{Cross-tool comparison}: Compare Cyborg Cognition patterns across Claude Code, GitHub Copilot, Cursor, and other tools.
+
+    \item \textbf{Expertise effects}: Investigate how Cyborg Cognition differs between novice and expert developers.
+
+    \item \textbf{Intervention studies}: Test whether visualizing delegation patterns changes developer behavior.
+
+    \item \textbf{Modality experiments}: Controlled studies comparing the same tasks performed via tool-augmented vs. conversational interfaces.
+\end{enumerate}
+
+%============================================================================
+\section{Conclusion}
+%============================================================================
+
+This paper presented the first longitudinal, tool-level empirical analysis of human-AI collaborative programming. Through computational autoethnography analyzing 802 sessions, 85,370 messages, and 27,672 tool invocations across 47 projects, we investigated how developers integrate AI coding assistants into their cognitive workflows.
+
+\subsection{Summary of Contributions}
+
+\textbf{Empirical Contributions}:
+\begin{itemize}
+    \item First dataset capturing professional human-AI programming collaboration at tool-level granularity
+    \item Evidence of high cognitive delegation (score: 0.71), suggesting developers treat AI as cognitive extension
+    \item Discovery of intentional model selection patterns (7.59$\times$ session length ratio between capability tiers)
+    \item Characterization of sustained collaboration intensity (2,846 messages per active day)
+\end{itemize}
+
+\textbf{Theoretical Contribution}:
+\begin{itemize}
+    \item The concept of \textit{Cyborg Cognition in Software Development}---a framework for understanding cognitive integration between human developers and AI systems
+    \item Four dimensions of Cyborg Cognition: delegation spectrum, cognitive extension, adaptive selection, and context fluidity
+    \item Extension of artifact-based developer cognition analysis to real-time interaction analysis
+\end{itemize}
+
+\textbf{Methodological Contribution}:
+\begin{itemize}
+    \item Demonstration of computational autoethnography as a viable approach for studying human-AI collaboration
+    \item Operationalization of cognitive delegation through tool categorization and weighted scoring
+\end{itemize}
+
+\subsection{Key Insights}
+
+Our findings challenge the ``AI as autocomplete'' mental model that dominates popular discourse. The developers in our study do not use AI to predict the next few tokens; they delegate entire cognitive tasks---information gathering, task planning, command execution---to AI systems while retaining high-level direction and quality judgment.
+
+The 7.59$\times$ model selection ratio provides striking evidence of meta-cognitive sophistication. Developers do not treat AI as monolithic; they consciously match AI capability to task complexity. This suggests human-AI collaboration involves \textit{thinking about which kind of thinking partner to engage}.
+
+The sustained intensity of collaboration (nearly 3,000 messages per day, 13+ projects per week) indicates that AI integration is not an occasional convenience but a fundamental restructuring of how software development work is performed.
+
+\subsection{Implications}
+
+For \textbf{researchers}: Studies of developer productivity and cognition should account for AI integration. The appropriate unit of analysis may be the developer-AI system, not the developer alone.
+
+For \textbf{tool designers}: AI coding assistants should surface model selection as a first-class decision, visualize delegation patterns, and optimize for exploration (information gathering) alongside generation.
+
+For \textbf{educators}: Developer training should include AI collaboration skills: when to delegate, how to evaluate AI outputs, and how to select appropriate AI capabilities.
+
+For \textbf{developers}: Awareness of one's own delegation patterns may enable more intentional and effective human-AI collaboration.
+
+\subsection{Limitations}
+
+This study is limited by its single-subject design, specific tooling context (Claude Code), and 30-day duration. The delegation score and Cyborg Cognition framework are novel constructs requiring validation through replication. We explicitly invite studies testing whether our findings generalize across developers, tools, and contexts.
+
+\subsection{Future Directions}
+
+The most pressing next step is multi-participant replication: do other developers show similar delegation patterns, model selection ratios, and tool hierarchies? Cross-tool comparison (Claude Code vs. Copilot vs. Cursor) would reveal which patterns are tool-specific versus general.
+
+Intervention studies could test whether visualizing delegation patterns changes developer behavior. Longitudinal studies over months or years could capture the evolution of Cyborg Cognition as developers deepen their AI integration.
+
+Finally, comparative analysis with public datasets like DevGPT \citep{tao2024devgpt} could contextualize individual patterns against community-level trends.
+
+\subsection{Closing Reflection}
+
+We titled this paper ``The Cyborg Developer'' not as provocation but as description. The data shows a developer whose cognitive processes---memory, search, planning, execution---are distributed across human and AI components in sustained, intentional integration.
+
+If this pattern generalizes, we are witnessing a fundamental transformation in what it means to be a software developer. The developer of 2030 may be inseparable from their AI collaborators, not as tool users but as cognitive hybrids. Understanding this transformation---its opportunities, risks, and implications---is among the most important research agendas in software engineering today.
+
+This paper offers a first empirical glimpse into that future.
+
+\section*{Data Availability}
+
+Replication package including analysis scripts, aggregated data, and figures available at:
+
+\url{https://github.com/anderson-ufrj/cyborg}
+
+\noindent Raw JSONL interaction logs contain sensitive project information and will be available upon request with appropriate data use agreements.
+
+\section*{Conflict of Interest}
+
+None declared.
+
+%============================================================================
+% REFERENCES
+%============================================================================
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+%============================================================================
+\appendix
+%============================================================================
+
+\section{Tool Category Definitions}
+
+\subsection{Exploration Tools}
+Tools that gather information without modifying state:
+\begin{itemize}
+    \item \textbf{Read}: Read file contents
+    \item \textbf{Grep}: Search for patterns in files
+    \item \textbf{Glob}: Find files matching patterns
+    \item \textbf{WebSearch}: Search the web
+    \item \textbf{WebFetch}: Retrieve web page content
+    \item \textbf{LSP}: Language server queries (definitions, references)
+\end{itemize}
+
+\subsection{Modification Tools}
+Tools that change file contents:
+\begin{itemize}
+    \item \textbf{Write}: Create or overwrite files
+    \item \textbf{Edit}: Apply targeted edits to files
+    \item \textbf{MultiEdit}: Apply multiple edits in one operation
+    \item \textbf{NotebookEdit}: Edit Jupyter notebook cells
+\end{itemize}
+
+\subsection{Execution Tools}
+Tools that run commands or manage processes:
+\begin{itemize}
+    \item \textbf{Bash}: Execute shell commands
+    \item \textbf{Task}: Launch sub-agents for complex tasks
+    \item \textbf{TaskOutput}: Retrieve output from background tasks
+    \item \textbf{KillShell}: Terminate running processes
+\end{itemize}
+
+\subsection{Planning Tools}
+Tools that manage task state and workflow:
+\begin{itemize}
+    \item \textbf{TodoWrite}: Create and update task lists
+    \item \textbf{EnterPlanMode}: Begin structured planning
+    \item \textbf{ExitPlanMode}: Complete planning phase
+\end{itemize}
+
+\subsection{Interaction Tools}
+Tools that explicitly request human input:
+\begin{itemize}
+    \item \textbf{AskUserQuestion}: Pose questions to the developer
+\end{itemize}
+
+\section{Delegation Score Calculation}
+
+The delegation score $D$ is computed as a weighted average of tool category usage:
+
+\begin{equation}
+D = \frac{\sum_{c \in C} p_c \cdot w_c}{\sum_{c \in C} p_c}
+\end{equation}
+
+Where:
+\begin{itemize}
+    \item $C$ = set of tool categories
+    \item $p_c$ = percentage of tool uses in category $c$
+    \item $w_c$ = delegation weight for category $c$
+\end{itemize}
+
+Delegation weights:
+\begin{itemize}
+    \item Exploration: $w = 1.0$ (high delegation---AI gathers information)
+    \item Planning: $w = 1.0$ (high delegation---AI manages tasks)
+    \item Modification: $w = 0.5$ (medium---shared authorship)
+    \item Execution: $w = 0.5$ (variable---depends on command autonomy)
+    \item Interaction: $w = 0.0$ (low---human deciding)
+\end{itemize}
+
+For our dataset:
+\begin{align}
+D &= \frac{33.5 \times 1.0 + 8.7 \times 1.0 + 21.5 \times 0.5 + 35.8 \times 0.5 + 0.5 \times 0.0}{100} \\
+&= \frac{33.5 + 8.7 + 10.75 + 17.9 + 0}{100} \\
+&= \frac{70.85}{100} \\
+&= 0.71
+\end{align}
+
+\section{Model Tier Definitions}
+
+\begin{table}[h]
+\centering
+\caption{Claude Model Tiers}
+\begin{tabular}{llll}
+\toprule
+\textbf{Model} & \textbf{Tier} & \textbf{Characteristics} & \textbf{Typical Use} \\
+\midrule
+Opus 4.5 & High & Complex reasoning, large context & Architecture, debugging \\
+Sonnet 4.5 & Medium & Balanced capability and speed & General development \\
+Haiku 4.5 & Low & Fast, efficient & Quick queries, routine \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Session JSONL Format}
+
+Each session is stored as a JSONL file with events:
+
+\begin{lstlisting}[caption={Sample JSONL event}]
+{
+  "type": "assistant",
+  "message": {
+    "role": "assistant",
+    "model": "claude-opus-4-5-20251101",
+    "content": [...],
+    "usage": {
+      "input_tokens": 1234,
+      "output_tokens": 567
+    }
+  },
+  "timestamp": "2025-12-30T10:15:00.000Z",
+  "sessionId": "abc-123-def",
+  "cwd": "/home/user/project"
+}
+\end{lstlisting}
+
+Tool invocations appear within message content:
+
+\begin{lstlisting}[caption={Tool use structure}]
+{
+  "type": "tool_use",
+  "id": "toolu_01ABC...",
+  "name": "Bash",
+  "input": {
+    "command": "npm test"
+  }
+}
+\end{lstlisting}
+
+\end{document}

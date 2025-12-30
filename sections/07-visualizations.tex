@@ -1,0 +1,182 @@
+% Section 7: Enhanced Visualizations and Results
+
+\section{Enhanced Visualizations}
+
+This section presents the advanced visualizations generated from our enhanced analysis, providing visual insights into the temporal evolution, complexity patterns, and multi-dimensional relationships discovered in our data.
+
+\subsection{Temporal Evolution Analysis}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/fig1_temporal_evolution.png}
+\caption{Temporal Evolution of Cyborg Cognition: Efficiency and Intensity Over Time. The figure shows the three distinct adoption phases (Exploration, Adoption, Optimization) and reveals the efficiency paradox where apparent efficiency decreases as users tackle more complex problems.}
+\label{fig:temporal-evolution}
+\end{figure}
+
+Figure~\ref{fig:temporal-evolution} illustrates the temporal patterns of AI integration over the 6-week study period. The efficiency trend line shows the paradoxical decrease in efficiency (from 1.23× to 0.52×) as the developer progressed from simple routine tasks to complex problem-solving. The intensity bars show peak usage in Week 49 (2025-W49) with 30,733 messages, marking the transition from adoption to optimization phase.
+
+\subsection{Multi-Dimensional Complexity Clusters}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/fig2_complexity_clusters.png}
+\caption{Multi-Dimensional Complexity Analysis: Four distinct project archetypes identified through K-means clustering. Each cluster represents a unique pattern of session length, tool intensity, and token density, revealing sophisticated collaboration strategies beyond simple high/low complexity classification.}
+\label{fig:complexity-clusters}
+\end{figure}
+
+Figure~\ref{fig:complexity-clusters} presents our machine learning analysis that identified four distinct complexity archetypes:
+
+\begin{itemize}
+    \item \textbf{Cluster 0 (Lightweight)}: 18 projects with moderate session length (64.1 msgs) and balanced tool usage
+    \item \textbf{Cluster 1 (Standard)}: 21 projects with shorter sessions (37.3 msgs) and efficient workflows  
+    \item \textbf{Cluster 2 (Deep-Dive)}: 7 projects with extended sessions (222.7 msgs) and intensive exploration
+    \item \textbf{Cluster 3 (Intensive)}: 1 project with very long sessions (263 msgs) and high token density
+\end{itemize}
+
+\subsection{Model Selection and Optimization Patterns}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/fig3_model_selection.png}
+\caption{Model Selection vs. Project Complexity: Scatter plot showing the relationship between AI capability selection and project complexity scores. Bubble sizes represent the number of projects, revealing optimization strategies where developers match model capabilities to task requirements.}
+\label{fig:model-selection}
+\end{figure}
+
+Figure~\ref{fig:model-selection} reveals sophisticated model selection strategies. The plot shows complexity scores vs. average session length for different AI models, with bubble sizes indicating project counts. Notable findings include the "Haiku Paradox" where some high-complexity projects use the "fast/cheap" model for cost optimization on routine subtasks.
+
+\subsection{Tool Usage and Cognitive Workflow}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/fig4_tool_workflow.png}
+\caption{Cognitive Workflow Analysis: Distribution of tool categories by cognitive delegation level, revealing the primary Information→Execution→Modification cycle. The workflow diagram illustrates how AI extends human cognitive capacity across different task types.}
+\label{fig:tool-workflow}
+\end{figure}
+
+Figure~\ref{fig:tool-workflow} breaks down our weighted delegation analysis, showing how different tool categories contribute to the cyborg cognition system. The weighted delegation score of 0.752 indicates higher integration than traditional frequency-based analysis, with execution (35.8\%) and exploration (33.5\%) dominating the cognitive workflow.
+
+\subsection{Project Maturity and Evolution}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/fig5_project_maturity.png}
+\caption{Project Maturity Analysis: Distribution of projects across maturity stages and the relationship between maturity and efficiency. The maturity progression diagram shows the evolution from experimental learning to optimized integration.}
+\label{fig:project-maturity}
+\end{figure}
+
+Figure~\ref{fig:project-maturity} presents our maturity analysis, showing that only 5 out of 47 projects reached the "mature" stage, but these demonstrate 45\% higher efficiency than experimental projects. The evolution stages reveal predictable patterns of cyborg cognition development.
+
+\subsection{Comparative Analysis Matrix}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/fig6_comparison_matrix.png}
+\caption{Cross-Source Comparison Matrix: Radar chart comparing our Cyborg Developer data with community baselines (DevGPT) and alternative interaction modalities (Claude.ai web). This reveals the significant impact of tool-augmented workflows on collaboration intensity.}
+\label{fig:comparison-matrix}
+\end{figure}
+
+Figure~\ref{fig:comparison-matrix} provides external validation through comparison with other data sources. The 12.1× difference between tool-augmented CLI sessions (106.4 msgs) and web chat sessions (8.8 msgs) demonstrates that interaction modality fundamentally shapes collaboration patterns, not just AI capability.
+
+\subsection{Advanced Multi-Analysis Summary}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/advanced_analysis.png}
+\caption{Comprehensive Analysis Dashboard: Multi-panel visualization summarizing all key findings including temporal evolution, complexity clusters, model selection patterns, and maturity relationships in a unified analytical framework.}
+\label{fig:advanced-summary}
+\end{figure}
+
+Figure~\ref{fig:advanced-summary} presents a comprehensive dashboard that integrates all our analytical dimensions. This unified visualization allows researchers to see the interconnections between temporal patterns, complexity archetypes, model optimization strategies, and project evolution trajectories.
+
+\subsection{Heat Map Analysis}
+
+To provide additional visual insights, we generated correlation heat maps for key metrics:
+
+\begin{table}[h]
+\centering
+\caption{Correlation Heat Map: Key Metrics Relationships}
+\label{tab:correlation-heatmap}
+\begin{tabular}{l|cccccc}
+\toprule
+\textbf{Metric} & \textbf{Sessions} & \textbf{Messages} & \textbf{Tool Intensity} & \textbf{Model Tier} & \textbf{Efficiency} & \textbf{Maturity} \\
+\midrule
+Sessions & 1.00 & 0.85 & 0.72 & 0.68 & 0.45 & 0.91 \\
+Messages & 0.85 & 1.00 & 0.66 & 0.73 & 0.38 & 0.83 \\
+Tool Intensity & 0.72 & 0.66 & 1.00 & 0.41 & 0.89 & 0.69 \\
+Model Tier & 0.68 & 0.73 & 0.41 & 1.00 & 0.32 & 0.65 \\
+Efficiency & 0.45 & 0.38 & 0.89 & 0.32 & 1.00 & 0.52 \\
+Maturity & 0.91 & 0.83 & 0.69 & 0.65 & 0.52 & 1.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The correlation analysis reveals strong relationships between project maturity and session metrics (0.91 for sessions, 0.83 for messages), and a particularly strong correlation between tool intensity and efficiency (0.89), supporting our weighted delegation approach.
+
+\subsection{Advanced Heat Map Analysis}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/comprehensive_heatmap_dashboard.png}
+\caption{Comprehensive Heat Map Dashboard: Multi-panel visualization showing temporal patterns, complexity archetypes, model selection, tool usage, project maturity, and metric correlations. This unified dashboard reveals the interconnected patterns of cyborg cognition across all analytical dimensions.}
+\label{fig:comprehensive-dashboard}
+\end{figure}
+
+Figure~\ref{fig:comprehensive-dashboard} presents our most advanced visualization---a comprehensive heat map dashboard that integrates all analytical dimensions into a unified analytical framework. Each panel reveals different aspects of cyborg cognition:
+
+\textbf{Panel 1 - Temporal Evolution}: Shows the efficiency paradox and intensity patterns across weeks, with the dramatic efficiency drop in weeks 5-6 indicating increased complexity handling.
+
+\textbf{Panel 2 - Complexity Archetypes}: Reveals how the four identified clusters differ across key characteristics, with Deep-Dive and Intensive clusters showing distinct patterns.
+
+\textbf{Panel 3 - Model Selection}: Demonstrates how different AI models are optimized for different project characteristics, revealing sophisticated user strategies.
+
+\textbf{Panel 4 - Tool Usage Patterns}: Shows the relationship between usage frequency and cognitive delegation, with exploration and execution tools dominating.
+
+\textbf{Panel 5 - Project Maturity}: Reveals the distribution of projects across maturity stages and their relative efficiency levels.
+
+\textbf{Panel 6 - Metrics Correlation}: Shows the interrelationships between key metrics, with particularly strong correlations between tool intensity and efficiency (0.89), and between maturity and session metrics (0.91 for sessions, 0.83 for messages).
+
+\subsection{Individual Heat Map Analysis}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{figures/heatmap_temporal.png}
+\caption{Temporal Heat Map: Detailed view of efficiency, session intensity, and message intensity patterns across the study period, revealing the three-phase adoption pattern with the efficiency paradox clearly visible.}
+\label{fig:temporal-heatmap}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{figures/heatmap_complexity.png}
+\caption{Complexity Archetypes Heat Map: Multi-dimensional view of the four project clusters across key characteristics, showing distinct patterns that support our machine learning-based classification.}
+\label{fig:complexity-heatmap}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{figures/heatmap_tool_usage.png}
+\caption{Tool Usage Pattern Heat Map: Relationship between usage frequency and cognitive delegation across tool categories, revealing the weighted delegation approach that accounts for cognitive load differences.}
+\label{fig:tool-heatmap}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{figures/heatmap_maturity.png}
+\caption{Project Maturity Heat Map: Distribution of projects across maturity stages and their relative efficiency levels, showing the progression from experimental to optimized collaboration.}
+\label{fig:maturity-heatmap}
+\end{figure}
+
+These individual heat maps provide detailed views of specific analytical dimensions, allowing researchers to examine the granular patterns that support our theoretical framework.
+
+Our enhanced visualizations reveal several critical patterns:
+
+\textbf{1. Non-Linear Evolution}: The temporal analysis shows that cyborg cognition development is not linear but follows predictable phases with temporary efficiency decreases.
+
+\textbf{2. Clustered Complexity}: Projects naturally fall into distinct archetypes, suggesting that one-size-fits-all AI tools may be suboptimal.
+
+\textbf{3. Strategic Model Selection}: Developers exhibit sophisticated optimization behavior, matching AI capabilities to project characteristics and cost constraints.
+
+\textbf{4. Maturity-Based Optimization}: Efficiency gains are most pronounced in mature collaborations, suggesting value in long-term AI integration.
+
+\textbf{5. Context Fluidity}: The ability to rapidly adapt across project contexts is a hallmark of advanced cyborg cognition.
+
+These visualizations provide the empirical foundation for our theoretical contributions and offer practical insights for tool designers and researchers studying human-AI collaboration.

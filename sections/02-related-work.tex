@@ -1,0 +1,85 @@
+% Section 2: Related Work
+
+\section{Related Work}
+
+This section reviews three bodies of literature that inform our study: AI coding assistants, human-AI collaboration, and developer cognition.
+
+\subsection{AI Coding Assistants}
+
+The release of GitHub Copilot in 2021 marked the mainstream arrival of AI coding assistants. Since then, research has examined these tools from multiple angles.
+
+\subsubsection{Productivity Studies}
+
+Peng et al. \cite{peng2023impact} conducted a randomized controlled trial showing Copilot users completed tasks 55.8\% faster. Vaithilingam et al. \cite{vaithilingam2022expectation} found productivity gains varied by task complexity, with benefits concentrated in routine coding. Ziegler et al. \cite{ziegler2022productivity} introduced the ``acceptance rate'' metric, finding that developers accept approximately 26\% of Copilot suggestions.
+
+These studies treat developers as input-output systems: AI goes in, code comes out. They do not examine \textit{how} developers integrate AI into their cognitive workflows.
+
+\subsubsection{User Studies}
+
+Barke et al. \cite{barke2023grounded} interviewed Copilot users, identifying two modes: ``acceleration'' (speeding up known tasks) and ``exploration'' (discovering new approaches). Prather et al. \cite{prather2023s} studied novices using Copilot, finding both benefits (scaffolding) and risks (over-reliance).
+
+User studies provide rich qualitative data but rely on self-report, which may not reflect actual behavior. Participants describe what they \textit{believe} they do, not necessarily what they \textit{actually} do.
+
+\subsubsection{Code Quality Studies}
+
+Nguyen and Nadi \cite{nguyen2022empirical} analyzed Copilot-generated code, finding security vulnerabilities in 40\% of scenarios tested. Perry et al. \cite{perry2023users} found that developers using AI assistants wrote less secure code while feeling more confident---a concerning combination.
+
+Our work complements these studies by examining the process of human-AI collaboration, not just its outputs.
+
+\subsection{Human-AI Collaboration}
+
+Beyond coding, a broader literature examines how humans collaborate with AI systems.
+
+\subsubsection{Levels of Automation}
+
+Parasuraman et al. \cite{parasuraman2000model} proposed a framework for human-automation interaction with four stages: information acquisition, information analysis, decision selection, and action implementation. AI coding assistants participate in all four stages, making them unusually comprehensive automation partners.
+
+\subsubsection{Human-AI Teaming}
+
+Seeber et al. \cite{seeber2020machines} studied AI as ``team member,'' finding that humans adapt their behavior based on perceived AI capabilities. Our finding of intentional model selection (7.59$\times$ ratio) provides empirical evidence of this adaptation in a programming context.
+
+\subsubsection{Trust and Reliance}
+
+Lee and See \cite{lee2004trust} reviewed trust in automation, distinguishing appropriate trust, over-trust, and under-trust. Our delegation score of 0.71 indicates substantial trust, but whether this is ``appropriate'' requires task-specific analysis we leave for future work.
+
+\subsection{Developer Cognition}
+
+Understanding developers as cognitive agents has a long history in software engineering.
+
+\subsubsection{Program Comprehension}
+
+Letovsky \cite{letovsky1987cognitive} proposed a model of program comprehension involving knowledge goals, conjectures, and mental models. Our ``exploration'' category (33\% of tool uses) maps onto the knowledge-gathering phase of this model, with AI serving as an external comprehension resource.
+
+\subsubsection{Cognitive Load}
+
+Sweller's cognitive load theory \cite{sweller1988cognitive} distinguishes intrinsic, extraneous, and germane load. AI coding assistants may reduce extraneous load (boilerplate, syntax lookup) while preserving germane load (architectural decisions, algorithm design). Our tool hierarchy data---with Bash and Read dominating---suggests developers offload low-germane tasks to AI.
+
+\subsubsection{Developer Mental Models}
+
+Our prior work, the Developer Mental Model Framework (DMMF) \cite{silva2025dmmf}, demonstrated that cognitive patterns could be inferred from software artifacts. Analyzing 40 repositories and 2,799 commits, DMMF identified four dimensions of developer cognition: cognitive, affective, conative, and reflective.
+
+The present study extends DMMF from artifact analysis to interaction analysis, capturing not what developers produce but how they produce it through human-AI collaboration.
+
+\subsection{Extended Cognition}
+
+Our theoretical framework draws on philosophy of mind literature.
+
+\subsubsection{Extended Mind Thesis}
+
+Clark and Chalmers \cite{clark1998extended} argued that cognitive processes can extend into the environment. Their famous example involves Otto, who relies on a notebook for memory. We argue that AI coding assistants function analogously---as external cognitive resources that become part of the developer's cognitive system.
+
+\subsubsection{Distributed Cognition}
+
+Hutchins \cite{hutchins1995cognition} studied cognition in complex sociotechnical systems (airplane cockpits, ship navigation). Software development with AI assistants represents a new form of distributed cognition---human and AI as a cognitive unit.
+
+\subsection{Research Gap}
+
+Prior work on AI coding assistants examines either:
+\begin{itemize}
+    \item \textbf{Outputs}: Productivity, code quality, security
+    \item \textbf{Perceptions}: User experiences, trust, satisfaction
+\end{itemize}
+
+What is missing is examination of the \textbf{process}---the moment-by-moment cognitive dynamics of human-AI collaboration. Our computational autoethnography addresses this gap by capturing every interaction at tool-level granularity over extended naturalistic use.
+
+Additionally, no prior work has examined \textbf{model selection} as a cognitive variable. The availability of multiple AI capability tiers (Opus, Sonnet, Haiku) creates a new dimension of human-AI collaboration that existing frameworks do not address.

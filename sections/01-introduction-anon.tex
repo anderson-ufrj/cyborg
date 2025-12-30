@@ -1,0 +1,47 @@
+% Section 1: Introduction (Anonymized for review)
+
+\section{Introduction}
+
+The emergence of AI-powered coding assistants---GitHub Copilot, Claude Code, Cursor, and others---represents a fundamental shift in software development practice. Industry surveys report adoption rates exceeding 70\% among professional developers, with claimed productivity gains of 30-50\% \cite{github2023copilot}. Yet our understanding of how developers integrate these tools into their cognitive workflows remains largely anecdotal, based on surveys and controlled experiments that capture neither the depth nor the longitudinal nature of real-world human-AI collaboration.
+
+Current research on AI coding assistants falls into two categories. First, \textit{productivity studies} measure output metrics---lines of code, task completion time, bug rates---treating the developer as a black box whose internal processes are irrelevant as long as outputs improve \cite{peng2023impact}. Second, \textit{perception studies} rely on self-reported experiences, asking developers how they \textit{feel} about AI tools rather than observing what they \textit{do} with them \cite{barke2023grounded}. Neither approach captures the cognitive reality of sustained human-AI collaboration.
+
+Da Silva \cite{silva2025dmmf} demonstrated that cognitive patterns can be systematically inferred from software artifacts such as commits, code structure, and documentation. Analyzing repositories and commits over extended periods, such frameworks reveal how static artifacts encode developer cognition through multiple dimensions: cognitive (problem-solving patterns), affective (emotional traces in code), conative (motivational indicators), and reflective (self-awareness in documentation). However, artifact-based analysis captures only the \textit{output} of cognitive processes---the committed code---not the \textit{process} itself.
+
+This paper extends artifact-based analysis to interaction analysis. We ask: \textbf{What cognitive patterns emerge when we observe not the products of development, but the moment-to-moment collaboration between developer and AI?}
+
+To answer this question, we employ \textit{computational autoethnography}---systematic self-study enhanced with complete instrumentation of human-AI interactions. Over 30 active days, we captured 802 collaborative sessions comprising 85,370 messages and 27,672 tool invocations across 47 distinct software projects. Unlike survey-based studies, our data includes every tool call, every token exchanged, and every model selection decision, providing unprecedented granularity into the cognitive dynamics of human-AI programming.
+
+Our analysis reveals five key findings:
+
+\begin{enumerate}
+    \item \textbf{High Cognitive Delegation}: A delegation score of 0.71 (scale 0-1) indicates that developers treat AI as genuine cognitive extension, not mere autocomplete. Information gathering (33.5\%) and task planning (8.7\%) are substantially offloaded to AI systems.
+
+    \item \textbf{Intentional Model Selection}: Sessions using high-capability models (Opus) average 7.59$\times$ longer than those using efficient models (Haiku), demonstrating conscious matching of AI capability to task complexity.
+
+    \item \textbf{Tool Usage Hierarchy}: Execution (Bash, 36\%) and exploration (Read/Grep, 33.5\%) dominate tool usage, suggesting AI primarily extends the developer's capacity for action and information gathering rather than direct code generation.
+
+    \item \textbf{Sustained Collaboration Intensity}: With 2,846 messages and 922 tool uses per active day, human-AI collaboration represents sustained practice rather than occasional assistance.
+
+    \item \textbf{Context Fluidity}: The developer-AI dyad seamlessly transitions across 13.3 projects per week, adapting collaboration patterns to project-specific demands.
+\end{enumerate}
+
+Based on these findings, we propose \textit{Cyborg Cognition in Software Development} as a theoretical framework for understanding this phenomenon. Drawing on Clark's extended mind thesis \cite{clark1998extended} and Haraway's cyborg theory \cite{haraway1991cyborg}, we conceptualize the developer-AI system as an emergent cognitive unity where human and artificial capabilities become functionally integrated through sustained, intentional collaboration.
+
+\subsection{Contributions}
+
+This paper makes four contributions:
+
+\begin{enumerate}
+    \item \textbf{Empirical Dataset}: The first longitudinal, tool-level record of professional human-AI programming collaboration, capturing interaction patterns invisible to surveys and controlled experiments.
+
+    \item \textbf{Cognitive Delegation Metrics}: Quantitative measures for how developers distribute cognitive work between themselves and AI systems, operationalizing the intuitive notion of ``AI as thinking partner.''
+
+    \item \textbf{Model Selection Analysis}: Empirical evidence of intentional, complexity-aware selection of AI capability tiers, demonstrating meta-cognitive sophistication in human-AI collaboration.
+
+    \item \textbf{Theoretical Framework}: The concept of Cyborg Cognition, providing vocabulary and analytical dimensions for studying cognitive extension in AI-augmented work.
+\end{enumerate}
+
+\subsection{Paper Structure}
+
+Section 2 reviews related work on AI coding assistants, human-AI collaboration, and developer cognition. Section 3 describes our computational autoethnography methodology and dataset. Section 4 presents five empirical findings with supporting evidence. Section 5 develops the Cyborg Cognition framework and discusses implications. Section 6 concludes with limitations and future directions.

@@ -1,0 +1,83 @@
+# ===========================================
+# SENSITIVE DATA - DO NOT COMMIT
+# ===========================================
+
+# Personal Anthropic export (contains PII)
+data/anthropic_export/
+
+# Screenshots (personal screen captures)
+data/screenshots/
+
+# OCR results from screenshots
+data/ocr_results/
+
+# Large datasets (link to original sources instead)
+data/DevGPT_full/
+data/DevGPT/
+
+# ===========================================
+# LaTeX Build Artifacts
+# ===========================================
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+*.bcf
+*.run.xml
+*-blx.bib
+
+# ===========================================
+# Python
+# ===========================================
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+env/
+*.egg-info/
+.eggs/
+
+# ===========================================
+# IDE / Editor
+# ===========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# ===========================================
+# Temporary files
+# ===========================================
+*.tmp
+*.temp
+*.bak
+
+# ===========================================
+# Old/archived versions
+# ===========================================
+.old/
+
+# ===========================================
+# Draft/WIP PDFs (only Zenodo preprint is public)
+# ===========================================
+*.pdf
+!submission/zenodo/*.pdf
+
+# ===========================================
+# Claude Code internal files
+# ===========================================
+.claude/
+draft-v1.md

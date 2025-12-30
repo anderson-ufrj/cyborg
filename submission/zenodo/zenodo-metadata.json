@@ -1,0 +1,70 @@
+{
+  "metadata": {
+    "title": "The Cyborg Developer: Empirical Analysis of Cognitive Extension Through Human-AI Collaborative Programming",
+    "upload_type": "publication",
+    "publication_type": "preprint",
+    "publication_date": "2025-12-30",
+    "description": "<p>AI coding assistants are transforming software development, yet empirical understanding of how developers integrate these tools into cognitive workflows remains limited.</p><p>Through <strong>computational autoethnography</strong>, we analyze 802 collaborative sessions (85,370 messages, 27,672 tool invocations) across 47 projects over 30 days using Claude Code.</p><p><strong>Key findings:</strong></p><ul><li>Delegation score of 0.71 — developers treat AI as cognitive extension, not autocomplete</li><li>7.59× longer sessions with high-capability models — intentional model selection by task complexity</li><li>2,846 messages per active day — sustained integration, not occasional assistance</li><li>13.3 projects per week — fluid context-switching enabled by AI support</li></ul><p>We introduce <strong>Cyborg Cognition</strong> — the integrated cognitive system formed when human direction-setting combines with AI information gathering and execution. This framework extends theories of distributed cognition (Hutchins) and extended mind (Clark &amp; Chalmers) to human-AI programming collaboration.</p><p>Limitations include single-subject design; we provide sensitivity analyses and invite replication.</p>",
+    "creators": [
+      {
+        "name": "Silva, Anderson Henrique da",
+        "affiliation": "IFSULDEMINAS",
+        "orcid": "0009-0001-7144-4974"
+      }
+    ],
+    "keywords": [
+      "Human-AI Collaboration",
+      "Software Engineering",
+      "Cognitive Extension",
+      "Developer Tools",
+      "Empirical Study",
+      "Autoethnography",
+      "Claude Code",
+      "Cyborg Cognition",
+      "Extended Mind",
+      "Distributed Cognition"
+    ],
+    "subjects": [
+      {
+        "term": "Computer science",
+        "identifier": "http://id.loc.gov/authorities/subjects/sh89003285",
+        "scheme": "url"
+      },
+      {
+        "term": "Cognitive science",
+        "identifier": "http://id.loc.gov/authorities/subjects/sh87007652",
+        "scheme": "url"
+      },
+      {
+        "term": "Human-computer interaction",
+        "identifier": "http://id.loc.gov/authorities/subjects/sh92002381",
+        "scheme": "url"
+      }
+    ],
+    "language": "eng",
+    "access_right": "open",
+    "license": "cc-by-4.0",
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.18012186",
+        "relation": "continues",
+        "resource_type": "publication-preprint"
+      },
+      {
+        "identifier": "https://github.com/anderson-ufrj/cyborg",
+        "relation": "isSupplementTo",
+        "resource_type": "software",
+        "scheme": "url"
+      }
+    ],
+    "references": [
+      "Clark, A., & Chalmers, D. (1998). The Extended Mind. Analysis, 58(1), 7-19.",
+      "Hutchins, E. (1995). Cognition in the Wild. MIT Press.",
+      "Haraway, D. J. (1991). A Cyborg Manifesto. In Simians, Cyborgs, and Women. Routledge.",
+      "Peng, S., et al. (2023). The Impact of AI on Developer Productivity: Evidence from GitHub Copilot. arXiv:2302.06590.",
+      "Da Silva, A. H. (2025). From Commits to Cognition: A Mixed-Methods Framework for Inferring Developer Mental Models. Zenodo. doi:10.5281/zenodo.18012186"
+    ],
+    "version": "1.0",
+    "notes": "Preprint establishing priority for Cyborg Cognition framework. This paper extends the Developer Mental Model Framework (DMMF) from artifact analysis to real-time human-AI interaction analysis. Extended version with additional data forthcoming."
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "claude_code": {
+    "source": "Claude Code (CLI)",
+    "sessions": 802,
+    "total_messages": 85370,
+    "total_tool_uses": 27672,
+    "unique_projects": 47,
+    "period_days": 30,
+    "avg_messages_per_session": 106.4,
+    "characteristics": [
+      "Terminal-based interaction",
+      "Tool-augmented workflow",
+      "Project-specific context",
+      "High autonomy mode"
+    ]
+  },
+  "claude_web": {
+    "source": "Claude.ai (Web)",
+    "sessions": 893,
+    "total_messages": 7888,
+    "total_tool_uses": 0,
+    "unique_projects": 14,
+    "period_days": 365,
+    "date_range": "2025-01-02 to 2025-12-30",
+    "avg_messages_per_session": 8.8,
+    "characteristics": [
+      "Browser-based interaction",
+      "Conversational Q&A",
+      "General-purpose queries",
+      "Manual copy-paste workflow"
+    ]
+  },
+  "devgpt": {
+    "source": "DevGPT (External)",
+    "sessions": 1920,
+    "total_messages": 13958,
+    "total_prompts": 6979,
+    "code_snippets": 4974,
+    "avg_messages_per_session": 7.269791666666666,
+    "models": {
+      "Default (GPT-3.5)": 502,
+      "Default": 71,
+      "Advanced Data Analysis": 146,
+      "GPT-4": 1075,
+      "Plugins": 99,
+      "Web Browsing": 26,
+      "Model: Default": 1
+    },
+    "characteristics": [
+      "ChatGPT shared links",
+      "GitHub/HackerNews context",
+      "Community-sourced data",
+      "Multiple developers"
+    ]
+  },
+  "key_insights": [
+    {
+      "insight": "Session Intensity Difference",
+      "value": "12.1x",
+      "description": "Claude Code sessions are 12.1x more intensive than web chat"
+    },
+    {
+      "insight": "vs DevGPT Community Average",
+      "value": "14.6x",
+      "description": "Individual developer sessions 14.6x longer than DevGPT community average"
+    },
+    {
+      "insight": "Tool Augmentation",
+      "value": "27,672",
+      "description": "Tool invocations demonstrating AI as execution engine, not just conversational agent"
+    }
+  ]
+}
