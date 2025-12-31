@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: "The Cyborg Developer: Empirical Analysis of Cognitive Extension Through Human-AI Collaborative Programming"
+type: dataset
+authors:
+  - family-names: Silva
+    given-names: Anderson Henrique
+    name-particle: da
+    orcid: "https://orcid.org/0009-0001-7144-4974"
+    affiliation: IFSULDEMINAS
+doi: 10.5281/zenodo.18111064
+date-released: 2025-12-30
+license: CC-BY-4.0
+repository-code: "https://github.com/anderson-ufrj/cyborg"
+keywords:
+  - human-ai-collaboration
+  - software-engineering
+  - cognitive-extension
+  - autoethnography
+  - cyborg-cognition

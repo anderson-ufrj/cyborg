@@ -47,7 +47,7 @@ Minas Gerais, Brasil\\
 \texttt{ORCID: 0009-0001-7144-4974}
 }
 
-\date{December 2025\\[0.5em]\small Version 0.2}
+\date{December 2025}
 
 \begin{document}
 
@@ -675,16 +675,16 @@ Table~\ref{tab:projects} shows the top projects by session count.
 \toprule
 \textbf{Project} & \textbf{Sessions} & \textbf{Messages} & \textbf{Type} \\
 \midrule
-cidadao.ai-frontend & 206 & --- & Web UI \\
-telepatia & 112 & --- & Audio/ML \\
-cidadao.ai-backend & 64 & --- & API \\
-cidadao.ai & 58 & --- & Multi-agent \\
-project-personal-001 & 55 & --- & Personal \\
-prompt-engineering & 33 & --- & Research \\
-Documentos & 30 & --- & General \\
-reseachEpapers & 21 & --- & Academic \\
-langchain-maritaca & 20 & --- & LLM \\
-SBSI & 16 & --- & Conference \\
+ProjectA-frontend & 206 & --- & Web UI \\
+ProjectB & 112 & --- & Audio/ML \\
+ProjectA-backend & 64 & --- & API \\
+ProjectA & 58 & --- & Multi-agent \\
+ProjectC & 55 & --- & Personal \\
+ProjectD & 33 & --- & Research \\
+ProjectE & 30 & --- & General \\
+ProjectF & 21 & --- & Academic \\
+ProjectG & 20 & --- & LLM \\
+ProjectH & 16 & --- & Conference \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -693,10 +693,10 @@ SBSI & 16 & --- & Conference \\
 
 The 47 distinct projects span:
 \begin{itemize}
-    \item Production systems (cidadao.ai-*)
-    \item Research projects (prompt-engineering, reseachEpapers)
-    \item Experiments (langchain-maritaca, telepatia)
-    \item Administrative work (Documentos, SBSI)
+    \item Production systems (ProjectA-*)
+    \item Research projects (ProjectD, ProjectF)
+    \item Experiments (ProjectG, ProjectB)
+    \item Administrative work (ProjectE, ProjectH)
 \end{itemize}
 
 \subsubsection{Adaptive Collaboration}
@@ -712,7 +712,7 @@ The developer-AI system reconfigures itself based on project nature, demonstrati
 
 \subsubsection{Project Concentration Analysis}
 
-A methodological concern is that the cidadao.ai ecosystem dominates the dataset:
+A methodological concern is that the ProjectA ecosystem dominates the dataset:
 
 \begin{table}[h]
 \centering
@@ -722,7 +722,7 @@ A methodological concern is that the cidadao.ai ecosystem dominates the dataset:
 \toprule
 \textbf{Project Category} & \textbf{Sessions} & \textbf{\%} \\
 \midrule
-cidadao.ai-* (combined) & 328 & 40.9\% \\
+ProjectA-* (combined) & 328 & 40.9\% \\
 Other projects (43) & 474 & 59.1\% \\
 \bottomrule
 \end{tabular}
@@ -731,12 +731,12 @@ Other projects (43) & 474 & 59.1\% \\
 To assess whether findings are driven by this dominant project, we computed delegation scores separately:
 
 \begin{itemize}
-    \item \textbf{cidadao.ai-* sessions}: $D = 0.69$
-    \item \textbf{Non-cidadao sessions}: $D = 0.73$
+    \item \textbf{ProjectA-* sessions}: $D = 0.69$
+    \item \textbf{Non-ProjectA sessions}: $D = 0.73$
     \item \textbf{Overall}: $D = 0.71$
 \end{itemize}
 
-The minimal difference (0.04) suggests delegation patterns are relatively consistent across project types. Similarly, the 7.59$\times$ model selection ratio holds when computed separately for cidadao.ai (7.2$\times$) and other projects (8.1$\times$).
+The minimal difference (0.04) suggests delegation patterns are relatively consistent across project types. Similarly, the 7.59$\times$ model selection ratio holds when computed separately for ProjectA (7.2$\times$) and other projects (8.1$\times$).
 
 This consistency strengthens confidence that observed patterns reflect general collaboration style rather than project-specific artifacts. However, we acknowledge that a single developer's multiple projects may share underlying characteristics, limiting independence.
 
