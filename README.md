@@ -29,38 +29,94 @@ cyborg-developer/
 │   ├── sections/                   # Paper sections (.tex files)
 │   └── figures/                    # Visualizations (.png, .pdf)
 │
-├── data/                           # Data pipeline
-│   ├── 00_raw/                     # Raw data (gitignored - PII)
-│   ├── 01_processed/               # Session metrics (472 files)
-│   │   └── sessions/               # Individual session data
-│   └── 02_aggregated/              # Consolidated analysis
-│       ├── findings.json
-│       ├── aggregate_report.json
-│       └── advanced_analysis.json
+├── src/                            # Analysis code
+│   ├── analysis/                   # Core analysis modules
+│   │   ├── cyborg_developer_analysis.py    # Main analysis pipeline
+│   │   ├── compute_weekly_delegation.py    # Weekly delegation scores
+│   │   ├── extract_micro_examples.py       # Interaction pattern extraction
+│   │   └── analyze_verification_patterns.py # Rejection/verification analysis
+│   ├── metrics/                    # Metric calculation
+│   │   └── interaction_analyzer.py
+│   ├── import/                     # Data importers
+│   │   └── history_importer.py     # Claude Code JSONL importer
+│   ├── calibration/                # Calibration tools
+│   ├── pipeline/                   # Data processing pipelines
+│   ├── experiments/                # Experiment runners
+│   └── versioning/                 # Version management
 │
-├── scripts/                        # Analysis scripts
-│   ├── analyze_all_sources.py
-│   ├── analyze_devgpt.py
-│   ├── advanced_analysis.py
-│   ├── create_heatmaps.py
-│   ├── create_enhanced_figures.py
-│   └── ocr_screenshots.py
+├── evidence/                       # Supporting evidence
+│   ├── metrics/                    # Session metrics (535 files)
+│   │   ├── data/                   # Individual session data
+│   │   ├── historical/             # Aggregate reports
+│   │   └── sessions/               # Session-level summaries
+│   ├── analysis/                   # Analysis outputs
+│   │   ├── verification_analysis.json
+│   │   └── micro_examples/         # Extracted interaction patterns
+│   └── patterns/                   # Pattern documentation
 │
-├── docs/                           # Pattern documentation
+├── data/                           # Sample data
+│   └── sample/                     # Anonymized examples
+│
+├── docs/                           # Documentation
 │   ├── 001-commit-patterns.md
 │   ├── 002-dmmf-cognitive-profile.md
 │   ├── 003-anthropic-agent-patterns.md
 │   └── 004-design-science-research-methodology.md
 │
-├── submission/                     # Publication-ready files
-│   └── zenodo/
+├── submission/                     # Publication files
+│   └── zenodo/                     # Preprint
 │       ├── Cyborg-Developer-DaSilvaAnderson-Preprint.pdf
 │       └── zenodo-metadata.json
 │
 ├── CITATION.cff                    # Citation metadata
-├── LICENSE                         # MIT License
+├── LICENSE                         # CC BY 4.0 (paper) + MIT (code)
 ├── README.md                       # This file
 └── requirements.txt                # Python dependencies
+```
+
+## Running the Analysis
+
+### Prerequisites
+
+```bash
+pip install -r requirements.txt
+```
+
+### Import Claude Code History
+
+```bash
+# Import from ~/.claude/projects (default location)
+python src/import/history_importer.py
+
+# Import from custom location
+python src/import/history_importer.py --source /path/to/projects --output evidence/metrics/historical
+```
+
+### Run Main Analysis
+
+```bash
+# Full analysis pipeline
+python src/analysis/cyborg_developer_analysis.py
+
+# Weekly delegation scores
+python src/analysis/compute_weekly_delegation.py
+```
+
+### Extract Interaction Patterns
+
+```bash
+# Extract micro-level interaction examples (Execute-Explore-Modify cycles)
+python src/analysis/extract_micro_examples.py
+
+# Analyze verification/rejection patterns
+python src/analysis/analyze_verification_patterns.py
+```
+
+### Generate Visualizations
+
+```bash
+python src/create_heatmaps.py
+python src/create_enhanced_figures.py
 ```
 
 ## Preprint
@@ -76,7 +132,7 @@ See: [Da Silva (2025). From Commits to Cognition. Zenodo. doi:10.5281/zenodo.180
 ## Data Availability
 
 **Included in this repository:**
-- Session metrics (472 anonymized session files)
+- Session metrics (535 anonymized session files)
 - Aggregate statistics and analysis results
 - Analysis scripts for reproducibility
 - All figures and tables
@@ -86,19 +142,9 @@ See: [Da Silva (2025). From Commits to Cognition. Zenodo. doi:10.5281/zenodo.180
 - Screenshots
 - Anthropic data export
 
-**External datasets referenced:**
-- [DevGPT Dataset](https://github.com/NAIST-SE/DevGPT) (MSR 2024)
-
 ## Building the Paper
 
 ```bash
-# DIS 2026 version (anonymous, single-column)
-cd paper
-pdflatex main-dis.tex
-bibtex main-dis
-pdflatex main-dis.tex
-pdflatex main-dis.tex
-
 # Main version (sigconf format)
 cd paper
 pdflatex main.tex
@@ -106,11 +152,16 @@ bibtex main
 pdflatex main.tex
 pdflatex main.tex
 
-# Preprint version (standalone)
+# DIS 2026 version (anonymous)
+pdflatex main-dis.tex
+bibtex main-dis
+pdflatex main-dis.tex
+pdflatex main-dis.tex
+
+# Preprint version
 cd submission/zenodo
 pdflatex cyborg-developer-preprint.tex
 bibtex cyborg-developer-preprint
-pdflatex cyborg-developer-preprint.tex
 pdflatex cyborg-developer-preprint.tex
 ```
 
