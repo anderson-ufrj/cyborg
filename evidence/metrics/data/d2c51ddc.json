@@ -1,0 +1,27 @@
+{
+  "id": "d2c51ddc",
+  "timestamp": "2025-12-31T10:14:40.557205",
+  "session_id": "7e0caba8-106a-4664-9c30-f236fe113b38",
+  "tool_use_id": "toolu_013PXYjBfnEWtnxLro1ZmAyK",
+  "tool_name": "TodoWrite",
+  "tool_category": "planning",
+  "permission_mode": "default",
+  "cwd": "/home/anderson-henrique/Documentos/prompt-engineering",
+  "project": "prompt-engineering",
+  "input_keys": [
+    "todos"
+  ],
+  "input_tokens_est": 251,
+  "output_tokens_est": 256,
+  "total_tokens_est": 507,
+  "success": true,
+  "success_indicators": [
+    "return_code_zero"
+  ],
+  "context_hints": [],
+  "pattern_applied": "pattern:planning",
+  "quality_score": 75,
+  "iteration_count": 1,
+  "transcript_path": "/home/anderson-henrique/.claude/projects/-home-anderson-henrique-Documentos-prompt-engineering/7e0caba8-106a-4664-9c30-f236fe113b38.jsonl",
+  "collector_version": "2.0.0"
+}

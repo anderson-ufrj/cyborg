@@ -6,7 +6,7 @@
   "tool_name": "TodoWrite",
   "tool_category": "planning",
   "permission_mode": "default",
-  "cwd": "/home/anderson-henrique/Documentos/prompt-engineering",
+  "cwd": "/home/user/Documentos/prompt-engineering",
   "project": "prompt-engineering",
   "input_keys": [
     "todos"
@@ -22,6 +22,6 @@
   "pattern_applied": "pattern:planning",
   "quality_score": 75,
   "iteration_count": 1,
-  "transcript_path": "/home/anderson-henrique/.claude/projects/-home-anderson-henrique-Documentos-prompt-engineering/7e0caba8-106a-4664-9c30-f236fe113b38.jsonl",
+  "transcript_path": "/home/user/.claude/projects/-home-user-Documentos-prompt-engineering/7e0caba8-106a-4664-9c30-f236fe113b38.jsonl",
   "collector_version": "2.0.0"
 }

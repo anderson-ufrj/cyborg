@@ -1,0 +1,28 @@
+{
+  "id": "aaa02845",
+  "timestamp": "2025-12-31T11:28:52.896548",
+  "session_id": "a09d3ff8-0ae6-4e77-82b2-55ba9786df1c",
+  "tool_use_id": "toolu_013ED8SLPUnxU96nSrL6mj15",
+  "tool_name": "Bash",
+  "tool_category": "execution",
+  "permission_mode": "default",
+  "cwd": "/home/anderson-henrique/Documentos/prompt-engineering",
+  "project": "prompt-engineering",
+  "input_keys": [
+    "command",
+    "description"
+  ],
+  "input_tokens_est": 40,
+  "output_tokens_est": 17,
+  "total_tokens_est": 57,
+  "success": true,
+  "success_indicators": [
+    "return_code_zero"
+  ],
+  "context_hints": [],
+  "pattern_applied": "pattern:execution",
+  "quality_score": 75,
+  "iteration_count": 1,
+  "transcript_path": "/home/anderson-henrique/.claude/projects/-home-anderson-henrique-Documentos-prompt-engineering/a09d3ff8-0ae6-4e77-82b2-55ba9786df1c.jsonl",
+  "collector_version": "2.0.0"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "aa84a28a",
+  "timestamp": "2025-12-31T10:20:27.994374",
+  "session_id": "7e0caba8-106a-4664-9c30-f236fe113b38",
+  "tool_use_id": "toolu_019YeGQMfF9Z8iprADwPD2PE",
+  "tool_name": "Read",
+  "tool_category": "exploration",
+  "permission_mode": "acceptEdits",
+  "cwd": "/home/anderson-henrique/Documentos/prompt-engineering",
+  "project": "prompt-engineering",
+  "input_keys": [
+    "file_path"
+  ],
+  "input_tokens_est": 22,
+  "output_tokens_est": 321,
+  "total_tokens_est": 343,
+  "success": true,
+  "success_indicators": [
+    "return_code_zero"
+  ],
+  "context_hints": [
+    "file_type:.yml"
+  ],
+  "pattern_applied": "pattern:investigation",
+  "quality_score": 80,
+  "iteration_count": 1,
+  "transcript_path": "/home/anderson-henrique/.claude/projects/-home-anderson-henrique-Documentos-prompt-engineering/7e0caba8-106a-4664-9c30-f236fe113b38.jsonl",
+  "collector_version": "2.0.0"
+}

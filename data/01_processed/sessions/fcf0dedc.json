@@ -6,7 +6,7 @@
   "tool_name": "Bash",
   "tool_category": "execution",
   "permission_mode": "acceptEdits",
-  "cwd": "/home/anderson-henrique/Documentos/reseachEpapers/papers/cyborg-developer",
+  "cwd": "/home/user/Documentos/reseachEpapers/papers/cyborg-developer",
   "project": "cyborg-developer",
   "input_keys": [
     "command",
@@ -26,6 +26,6 @@
   "pattern_applied": "pattern:execution",
   "quality_score": 80,
   "iteration_count": 1,
-  "transcript_path": "/home/anderson-henrique/.claude/projects/-home-anderson-henrique-Documentos-prompt-engineering/3976d2b3-5438-4e1f-bea5-b2710a7409e2.jsonl",
+  "transcript_path": "/home/user/.claude/projects/-home-user-Documentos-prompt-engineering/3976d2b3-5438-4e1f-bea5-b2710a7409e2.jsonl",
   "collector_version": "2.0.0"
 }

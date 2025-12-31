@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-12-30T08:51:56.981757",
+  "prompt_tokens": 160,
+  "response_tokens": 280,
+  "response_time_ms": 1157,
+  "quality_score": 0.804617867139046,
+  "iteration_count": 1,
+  "context_used": [
+    "anderson-skill",
+    "interview-prep",
+    "professional"
+  ],
+  "pattern_applied": "route",
+  "success_indicators": [
+    "task_completed",
+    "no_followup_needed",
+    "user_satisfied"
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "total_tool_uses": 27672,
+  "tools": {
+    "Glob": 1066,
+    "Read": 6494,
+    "Grep": 1349,
+    "TodoWrite": 2382,
+    "Bash": 9599,
+    "Write": 1620,
+    "Task": 123,
+    "Edit": 4335,
+    "WebSearch": 221,
+    "WebFetch": 148,
+    "AskUserQuestion": 46,
+    "TaskOutput": 41,
+    "EnterPlanMode": 11,
+    "ExitPlanMode": 14,
+    "KillShell": 49,
+    "NotebookEdit": 7,
+    "mcp__playwright__browser_navigate": 2,
+    "mcp__playwright__browser_press_key": 1,
+    "BashOutput": 152,
+    "AgentOutputTool": 12
+  },
+  "top_20": [
+    [
+      "Bash",
+      9599
+    ],
+    [
+      "Read",
+      6494
+    ],
+    [
+      "Edit",
+      4335
+    ],
+    [
+      "TodoWrite",
+      2382
+    ],
+    [
+      "Write",
+      1620
+    ],
+    [
+      "Grep",
+      1349
+    ],
+    [
+      "Glob",
+      1066
+    ],
+    [
+      "WebSearch",
+      221
+    ],
+    [
+      "BashOutput",
+      152
+    ],
+    [
+      "WebFetch",
+      148
+    ],
+    [
+      "Task",
+      123
+    ],
+    [
+      "KillShell",
+      49
+    ],
+    [
+      "AskUserQuestion",
+      46
+    ],
+    [
+      "TaskOutput",
+      41
+    ],
+    [
+      "ExitPlanMode",
+      14
+    ],
+    [
+      "AgentOutputTool",
+      12
+    ],
+    [
+      "EnterPlanMode",
+      11
+    ],
+    [
+      "NotebookEdit",
+      7
+    ],
+    [
+      "mcp__playwright__browser_navigate",
+      2
+    ],
+    [
+      "mcp__playwright__browser_press_key",
+      1
+    ]
+  ]
+}
