@@ -91,3 +91,7 @@ env/
 # Claude Code internal files
 # ===========================================
 .claude/
+
+# TOCHI submission (private until published)
+submission/tochi/
+submission/ijhcs/
