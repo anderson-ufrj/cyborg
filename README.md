@@ -20,37 +20,47 @@ We introduce **Cyborg Cognition**—the emergent cognitive system formed when de
 ## Repository Structure
 
 ```
-cyborg/
-├── main.tex                    # Main LaTeX document (sigconf format)
-├── main-dis.tex                # DIS 2026 submission (single-column, anonymous)
-├── references.bib              # Bibliography
-├── references-anon.bib         # Anonymous bibliography for review
-├── sections/                   # Paper sections
-│   ├── 01-introduction-anon.tex
-│   ├── 02-related-work-anon.tex
-│   ├── 03-methodology-anon.tex
-│   ├── 04-findings.tex
-│   ├── 05-discussion-anon.tex
-│   ├── 06-conclusion-anon.tex
-│   └── appendix-anon.tex
-├── figures/                    # Visualizations
-│   ├── heatmap_*.png           # Analysis heatmaps
-│   └── fig*_*.png              # Paper figures
-├── scripts/                    # Analysis scripts
-│   ├── analyze_sessions.py
+cyborg-developer/
+│
+├── paper/                          # Manuscript
+│   ├── main.tex                    # Main document (sigconf format)
+│   ├── main-dis.tex                # DIS 2026 submission (anonymous)
+│   ├── references.bib              # Bibliography
+│   ├── sections/                   # Paper sections (.tex files)
+│   └── figures/                    # Visualizations (.png, .pdf)
+│
+├── data/                           # Data pipeline
+│   ├── 00_raw/                     # Raw data (gitignored - PII)
+│   ├── 01_processed/               # Session metrics (472 files)
+│   │   └── sessions/               # Individual session data
+│   └── 02_aggregated/              # Consolidated analysis
+│       ├── findings.json
+│       ├── aggregate_report.json
+│       └── advanced_analysis.json
+│
+├── scripts/                        # Analysis scripts
+│   ├── analyze_all_sources.py
 │   ├── analyze_devgpt.py
-│   ├── analyze_anthropic.py
+│   ├── advanced_analysis.py
 │   ├── create_heatmaps.py
-│   └── advanced_analysis.py
-├── data/                       # Aggregate statistics (no PII)
-│   ├── aggregate_report.json
-│   └── advanced_analysis.json
-└── submission/                 # Submission-ready packages
-    └── zenodo/
-        ├── Cyborg-Developer-DaSilvaAnderson-Preprint.pdf
-        ├── cyborg-developer-preprint.tex
-        ├── references.bib
-        └── zenodo-metadata.json
+│   ├── create_enhanced_figures.py
+│   └── ocr_screenshots.py
+│
+├── docs/                           # Pattern documentation
+│   ├── 001-commit-patterns.md
+│   ├── 002-dmmf-cognitive-profile.md
+│   ├── 003-anthropic-agent-patterns.md
+│   └── 004-design-science-research-methodology.md
+│
+├── submission/                     # Publication-ready files
+│   └── zenodo/
+│       ├── Cyborg-Developer-DaSilvaAnderson-Preprint.pdf
+│       └── zenodo-metadata.json
+│
+├── CITATION.cff                    # Citation metadata
+├── LICENSE                         # MIT License
+├── README.md                       # This file
+└── requirements.txt                # Python dependencies
 ```
 
 ## Preprint
@@ -66,6 +76,7 @@ See: [Da Silva (2025). From Commits to Cognition. Zenodo. doi:10.5281/zenodo.180
 ## Data Availability
 
 **Included in this repository:**
+- Session metrics (472 anonymized session files)
 - Aggregate statistics and analysis results
 - Analysis scripts for reproducibility
 - All figures and tables
@@ -82,12 +93,20 @@ See: [Da Silva (2025). From Commits to Cognition. Zenodo. doi:10.5281/zenodo.180
 
 ```bash
 # DIS 2026 version (anonymous, single-column)
+cd paper
 pdflatex main-dis.tex
 bibtex main-dis
 pdflatex main-dis.tex
 pdflatex main-dis.tex
 
-# Preprint version
+# Main version (sigconf format)
+cd paper
+pdflatex main.tex
+bibtex main
+pdflatex main.tex
+pdflatex main.tex
+
+# Preprint version (standalone)
 cd submission/zenodo
 pdflatex cyborg-developer-preprint.tex
 bibtex cyborg-developer-preprint
