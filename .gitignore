@@ -11,6 +11,10 @@ data/screenshots/
 # OCR results from screenshots
 data/ocr_results/
 
+# Private backup (original non-anonymized data for validation)
+data/private_backup/
+data/*CONFIDENTIAL*
+
 # Large datasets (link to original sources instead)
 data/DevGPT_full/
 data/DevGPT/

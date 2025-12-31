@@ -235,7 +235,7 @@
         "complexity_tier": "high",
         "total_tokens": 7120
       },
-      "dnacarlos": {
+      "project-genetics-003": {
         "sessions": 3,
         "total_messages": 331,
         "total_tool_uses": 137,
@@ -295,7 +295,7 @@
         "complexity_tier": "high",
         "total_tokens": 56300
       },
-      "Downloads": {
+      "folder-downloads": {
         "sessions": 15,
         "total_messages": 136,
         "total_tool_uses": 17,
@@ -315,7 +315,7 @@
         "complexity_tier": "high",
         "total_tokens": 179774
       },
-      "dna": {
+      "project-genetics-004": {
         "sessions": 3,
         "total_messages": 144,
         "total_tool_uses": 62,
@@ -325,7 +325,7 @@
         "complexity_tier": "high",
         "total_tokens": 17781
       },
-      "anderson-henrique": {
+      "project-personal-001": {
         "sessions": 55,
         "total_messages": 768,
         "total_tool_uses": 194,
@@ -345,7 +345,7 @@
         "complexity_tier": "high",
         "total_tokens": 37822
       },
-      "Documentos": {
+      "folder-documents": {
         "sessions": 30,
         "total_messages": 2489,
         "total_tool_uses": 706,
@@ -395,7 +395,7 @@
         "complexity_tier": "high",
         "total_tokens": 102876
       },
-      "dna-marido": {
+      "project-genetics-001": {
         "sessions": 3,
         "total_messages": 135,
         "total_tool_uses": 34,
@@ -465,7 +465,7 @@
         "complexity_tier": "high",
         "total_tokens": 82394
       },
-      "dna-anderson": {
+      "project-genetics-002": {
         "sessions": 3,
         "total_messages": 56,
         "total_tool_uses": 24,
@@ -475,7 +475,7 @@
         "complexity_tier": "high",
         "total_tokens": 43468
       },
-      "dna-carlos": {
+      "project-genetics-003": {
         "sessions": 6,
         "total_messages": 651,
         "total_tool_uses": 176,
@@ -485,7 +485,7 @@
         "complexity_tier": "high",
         "total_tokens": 271028
       },
-      "neural_thinker": {
+      "project-personal-003": {
         "sessions": 3,
         "total_messages": 19,
         "total_tool_uses": 3,
@@ -495,7 +495,7 @@
         "complexity_tier": "high",
         "total_tokens": 7852
       },
-      "genealogia": {
+      "project-genealogy": {
         "sessions": 7,
         "total_messages": 875,
         "total_tool_uses": 330,
@@ -505,7 +505,7 @@
         "complexity_tier": "high",
         "total_tokens": 175828
       },
-      "andersons-lab": {
+      "project-personal-002": {
         "sessions": 3,
         "total_messages": 648,
         "total_tool_uses": 187,
@@ -545,7 +545,7 @@
         "complexity_tier": "high",
         "total_tokens": 22510
       },
-      "Imagens": {
+      "folder-images": {
         "sessions": 3,
         "total_messages": 203,
         "total_tool_uses": 69,
@@ -555,7 +555,7 @@
         "complexity_tier": "high",
         "total_tokens": 18994
       },
-      "Capturas de tela": {
+      "folder-screenshots": {
         "sessions": 1,
         "total_messages": 263,
         "total_tool_uses": 113,
@@ -620,7 +620,7 @@
         }
       ],
       [
-        "anderson-henrique",
+        "project-personal-001",
         {
           "sessions": 55,
           "total_messages": 768,
@@ -646,7 +646,7 @@
         }
       ],
       [
-        "Documentos",
+        "folder-documents",
         {
           "sessions": 30,
           "total_messages": 2489,
@@ -752,7 +752,7 @@
         }
       ],
       [
-        "Documentos",
+        "folder-documents",
         {
           "sessions": 30,
           "total_messages": 2489,
@@ -832,7 +832,7 @@
     ],
     "top_by_tool_intensity": [
       [
-        "dna",
+        "project-genetics-004",
         {
           "sessions": 3,
           "total_messages": 144,
@@ -845,7 +845,7 @@
         }
       ],
       [
-        "dna-anderson",
+        "project-genetics-002",
         {
           "sessions": 3,
           "total_messages": 56,
@@ -858,7 +858,7 @@
         }
       ],
       [
-        "Capturas de tela",
+        "folder-screenshots",
         {
           "sessions": 1,
           "total_messages": 263,
@@ -871,7 +871,7 @@
         }
       ],
       [
-        "dnacarlos",
+        "project-genetics-003",
         {
           "sessions": 3,
           "total_messages": 331,
@@ -910,7 +910,7 @@
         }
       ],
       [
-        "genealogia",
+        "project-genealogy",
         {
           "sessions": 7,
           "total_messages": 875,

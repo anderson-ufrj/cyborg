@@ -58,8 +58,8 @@
           "claude-opus-4-5-20251101"
         ],
         "example_projects": [
-          "anderson-henrique",
-          "Documentos",
+          "project-personal-001",
+          "folder-documents",
           "SBSI"
         ]
       },
@@ -128,7 +128,7 @@
     "insights": [
       "Identified 4 distinct complexity archetypes",
       "Model selection correlates with complexity: claude-sonnet-4-5-20250929",
-      "Most complex projects: ['dna', 'dna-anderson', 'Capturas de tela']"
+      "Most complex projects: ['project-genetics-004', 'project-genetics-002', 'folder-screenshots']"
     ]
   },
   "tool_sequencing": {
@@ -246,7 +246,7 @@
           "efficiency": 0.1299
         },
         {
-          "name": "Downloads",
+          "name": "folder-downloads",
           "efficiency": 0.01092
         },
         {
@@ -266,11 +266,11 @@
           "efficiency": 0.13833
         },
         {
-          "name": "dna-carlos",
+          "name": "project-genetics-003",
           "efficiency": 0.29295
         },
         {
-          "name": "genealogia",
+          "name": "project-genealogy",
           "efficiency": 0.475
         }
       ],
@@ -300,7 +300,7 @@
           "efficiency": 0.05009999999999999
         },
         {
-          "name": "dnacarlos",
+          "name": "project-genetics-003",
           "efficiency": 0.45222999999999997
         },
         {
@@ -312,7 +312,7 @@
           "efficiency": 0.12617
         },
         {
-          "name": "dna",
+          "name": "project-genetics-004",
           "efficiency": 0.2064
         },
         {
@@ -328,7 +328,7 @@
           "efficiency": 0.6838
         },
         {
-          "name": "dna-marido",
+          "name": "project-genetics-001",
           "efficiency": 0.1125
         },
         {
@@ -344,15 +344,15 @@
           "efficiency": 0.6076
         },
         {
-          "name": "dna-anderson",
+          "name": "project-genetics-002",
           "efficiency": 0.08041
         },
         {
-          "name": "neural_thinker",
+          "name": "project-personal-003",
           "efficiency": 0.01008
         },
         {
-          "name": "andersons-lab",
+          "name": "project-personal-002",
           "efficiency": 0.6264
         },
         {
@@ -364,11 +364,11 @@
           "efficiency": 0.08471999999999999
         },
         {
-          "name": "Imagens",
+          "name": "folder-images",
           "efficiency": 0.23018000000000002
         },
         {
-          "name": "Capturas de tela",
+          "name": "folder-screenshots",
           "efficiency": 1.1309
         }
       ],
@@ -382,7 +382,7 @@
           "efficiency": 0.2061
         },
         {
-          "name": "Documentos",
+          "name": "folder-documents",
           "efficiency": 0.23240000000000002
         },
         {
@@ -400,7 +400,7 @@
           "efficiency": 0.2274
         },
         {
-          "name": "anderson-henrique",
+          "name": "project-personal-001",
           "efficiency": 0.035
         },
         {
@@ -447,7 +447,7 @@
             "efficiency": 0.1299
           },
           {
-            "name": "Downloads",
+            "name": "folder-downloads",
             "efficiency": 0.01092
           },
           {
@@ -467,11 +467,11 @@
             "efficiency": 0.13833
           },
           {
-            "name": "dna-carlos",
+            "name": "project-genetics-003",
             "efficiency": 0.29295
           },
           {
-            "name": "genealogia",
+            "name": "project-genealogy",
             "efficiency": 0.475
           }
         ]
@@ -505,7 +505,7 @@
             "efficiency": 0.05009999999999999
           },
           {
-            "name": "dnacarlos",
+            "name": "project-genetics-003",
             "efficiency": 0.45222999999999997
           },
           {
@@ -517,7 +517,7 @@
             "efficiency": 0.12617
           },
           {
-            "name": "dna",
+            "name": "project-genetics-004",
             "efficiency": 0.2064
           },
           {
@@ -533,7 +533,7 @@
             "efficiency": 0.6838
           },
           {
-            "name": "dna-marido",
+            "name": "project-genetics-001",
             "efficiency": 0.1125
           },
           {
@@ -549,15 +549,15 @@
             "efficiency": 0.6076
           },
           {
-            "name": "dna-anderson",
+            "name": "project-genetics-002",
             "efficiency": 0.08041
           },
           {
-            "name": "neural_thinker",
+            "name": "project-personal-003",
             "efficiency": 0.01008
           },
           {
-            "name": "andersons-lab",
+            "name": "project-personal-002",
             "efficiency": 0.6264
           },
           {
@@ -569,11 +569,11 @@
             "efficiency": 0.08471999999999999
           },
           {
-            "name": "Imagens",
+            "name": "folder-images",
             "efficiency": 0.23018000000000002
           },
           {
-            "name": "Capturas de tela",
+            "name": "folder-screenshots",
             "efficiency": 1.1309
           }
         ]
@@ -591,7 +591,7 @@
             "efficiency": 0.2061
           },
           {
-            "name": "Documentos",
+            "name": "folder-documents",
             "efficiency": 0.23240000000000002
           },
           {
@@ -613,7 +613,7 @@
             "efficiency": 0.2274
           },
           {
-            "name": "anderson-henrique",
+            "name": "project-personal-001",
             "efficiency": 0.035
           },
           {
