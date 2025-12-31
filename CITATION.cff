@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+message: "If you use this research, please cite it as below."
+type: software
+title: "The Cyborg Developer: Empirical Analysis of Cognitive Extension Through Human-AI Collaborative Programming"
+abstract: >-
+  AI coding assistants are transforming software development, yet empirical
+  understanding of how developers integrate these tools into cognitive workflows
+  remains limited. Through computational autoethnography, we analyze 802
+  collaborative sessions (85,370 messages, 27,672 tool invocations) across 47
+  projects over 30 days. We introduce Cyborg Cognition—the integrated cognitive
+  system formed when human direction-setting combines with AI information
+  gathering and execution.
+authors:
+  - family-names: "Da Silva"
+    given-names: "Anderson Henrique"
+    orcid: "https://orcid.org/0009-0001-7144-4974"
+    affiliation: "Instituto Federal de Educação, Ciência e Tecnologia do Sul de Minas Gerais (IFSULDEMINAS)"
+    city: "Minas Gerais"
+    country: "BR"
+keywords:
+  - human-ai collaboration
+  - software engineering
+  - cognitive extension
+  - developer tools
+  - empirical study
+  - autoethnography
+  - cyborg cognition
+  - ai coding assistants
+license: CC-BY-4.0
+version: "1.0.0"
+date-released: "2025-12-30"
+doi: "10.5281/zenodo.18099559"
+url: "https://github.com/anderson-ufrj/cyborg-developer"
+repository-code: "https://github.com/anderson-ufrj/cyborg-developer"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.18099559"
+    description: "Zenodo archive"
+references:
+  - type: article
+    title: "From Commits to Cognition: A Framework for Inferring Developer Mental Models from Version Control Data"
+    authors:
+      - family-names: "Da Silva"
+        given-names: "Anderson Henrique"
+    doi: "10.5281/zenodo.18012186"
+    year: 2025
