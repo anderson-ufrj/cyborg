@@ -1,0 +1,62 @@
+{
+  "id": "ctx-performance-001",
+  "name": "Context Length vs Performance",
+  "hypothesis": "Optimized context length improves response time by 20% without quality loss",
+  "variants": [
+    {
+      "id": "full-context",
+      "name": "Full Context",
+      "prompt_template": "Complete personal context + technical skills + situational mode",
+      "context_modifiers": [
+        "complete_context",
+        "all_skills",
+        "full_background"
+      ],
+      "expected_outcome": "Highest quality but slower response",
+      "success_criteria": [
+        "quality_score > 0.85",
+        "response_time < 2000"
+      ]
+    },
+    {
+      "id": "essential-context",
+      "name": "Essential Context",
+      "prompt_template": "Core identity + relevant skills only",
+      "context_modifiers": [
+        "core_identity",
+        "relevant_skills",
+        "minimal_background"
+      ],
+      "expected_outcome": "Good quality with faster response",
+      "success_criteria": [
+        "quality_score > 0.80",
+        "response_time < 1500"
+      ]
+    },
+    {
+      "id": "adaptive-context",
+      "name": "Adaptive Context",
+      "prompt_template": "Context adapted to task complexity and urgency",
+      "context_modifiers": [
+        "adaptive_load",
+        "complexity_based",
+        "urgency_aware"
+      ],
+      "expected_outcome": "Optimal balance of quality and speed",
+      "success_criteria": [
+        "quality_score > 0.82",
+        "response_time < 1700"
+      ]
+    }
+  ],
+  "control_variant": "full-context",
+  "metrics_to_track": [
+    "quality_score",
+    "response_time",
+    "iteration_count",
+    "user_satisfaction"
+  ],
+  "sample_size": 50,
+  "status": "draft",
+  "created_at": "2025-12-30T08:51:53.030804"
+}

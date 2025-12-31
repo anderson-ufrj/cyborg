@@ -1,17 +1,23 @@
 # ===========================================
-# SENSITIVE DATA - DO NOT COMMIT
+# RESEARCH DATA - PRIVACY PROTECTION
 # ===========================================
 
-# Raw data (contains PII - screenshots, exports)
+# ALL data folders (contain session metrics, personal info)
 data/00_raw/
-
-# Private backup (original non-anonymized data)
+data/01_processed/
+data/02_aggregated/
 data/_private/
 data/*CONFIDENTIAL*
+
+# Keep only sample data for reproducibility
+!data/sample/
 
 # Large external datasets
 data/DevGPT_full/
 data/DevGPT/
+
+# Evidence folder (metrics, analysis results)
+evidence/
 
 # ===========================================
 # Reference Materials (too large for repo)
@@ -53,6 +59,7 @@ __pycache__/
 .Python
 venv/
 env/
+.venv/
 *.egg-info/
 .eggs/
 *.pkl

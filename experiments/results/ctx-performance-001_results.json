@@ -1,0 +1,46 @@
+{
+  "experiment_id": "ctx-performance-001",
+  "started_at": "2025-12-30T08:51:53.031993",
+  "completed_at": "2025-12-30T08:51:53.032103",
+  "variant_results": {
+    "full-context": {
+      "variant_id": "full-context",
+      "total_interactions": 50,
+      "success_rate": 0.9339628476742998,
+      "avg_quality_score": 0.7064100056274644,
+      "avg_response_time": 847,
+      "iteration_count": 3,
+      "user_satisfaction": 0.8851151063803662,
+      "completion_rate": 0.8819503382123779
+    },
+    "essential-context": {
+      "variant_id": "essential-context",
+      "total_interactions": 50,
+      "success_rate": 0.9197492091987354,
+      "avg_quality_score": 0.8870057149097673,
+      "avg_response_time": 1435,
+      "iteration_count": 3,
+      "user_satisfaction": 0.8820884148790646,
+      "completion_rate": 0.8021372131997012
+    },
+    "adaptive-context": {
+      "variant_id": "adaptive-context",
+      "total_interactions": 50,
+      "success_rate": 0.6798630016323398,
+      "avg_quality_score": 0.9076629218739515,
+      "avg_response_time": 1672,
+      "iteration_count": 2,
+      "user_satisfaction": 0.7261124488631763,
+      "completion_rate": 0.8486402930324546
+    }
+  },
+  "statistical_significance": false,
+  "winner": "essential-context",
+  "confidence_level": 0.03794258209180256,
+  "winner_score": 0.8788716028483039,
+  "all_scores": {
+    "full-context": 0.845524944909078,
+    "essential-context": 0.8788716028483039,
+    "adaptive-context": 0.7912083254310136
+  }
+}

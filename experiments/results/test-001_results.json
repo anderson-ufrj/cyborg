@@ -1,0 +1,21 @@
+{
+  "experiment_id": "test-001",
+  "started_at": "2025-12-30T09:51:27.266757",
+  "completed_at": "2025-12-30T09:51:27.266770",
+  "variant_results": {
+    "v1": {
+      "variant_id": "v1",
+      "total_interactions": 10,
+      "success_rate": 0.6855141838293608,
+      "avg_quality_score": 0.9481372170223367,
+      "avg_response_time": 1309,
+      "iteration_count": 1,
+      "user_satisfaction": 0.9311467999873688,
+      "completion_rate": 0.8813691520357643
+    }
+  },
+  "statistical_significance": null,
+  "winner": null,
+  "confidence_level": null,
+  "error": "Need at least 2 variants for analysis"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "test-001",
+  "name": "Test Experiment",
+  "hypothesis": "Testing basic functionality",
+  "variants": [
+    {
+      "id": "v1",
+      "name": "Variant 1",
+      "prompt_template": "Test template",
+      "context_modifiers": [],
+      "expected_outcome": "baseline",
+      "success_criteria": [
+        "quality_score > 0.7"
+      ]
+    }
+  ],
+  "control_variant": "v1",
+  "metrics_to_track": [
+    "quality_score"
+  ],
+  "sample_size": 10,
+  "status": "draft",
+  "created_at": "2025-12-30T09:51:27.266585"
+}

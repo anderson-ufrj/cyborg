@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-01-01T12:00:00.000000",
+  "prompt_tokens": 150,
+  "response_tokens": 300,
+  "response_time_ms": 1200,
+  "quality_score": 0.85,
+  "iteration_count": 1,
+  "context_used": [
+    "professional",
+    "technical"
+  ],
+  "pattern_applied": "route",
+  "success_indicators": [
+    "task_completed",
+    "no_followup_needed"
+  ],
+  "_comment": "This is anonymized sample data for reproducibility"
+}
