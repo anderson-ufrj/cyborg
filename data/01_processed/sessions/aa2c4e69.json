@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-12-30T08:51:52.525864",
+  "prompt_tokens": 120,
+  "response_tokens": 250,
+  "response_time_ms": 912,
+  "quality_score": 0.810492255943363,
+  "iteration_count": 1,
+  "context_used": [
+    "anderson-skill",
+    "debugging",
+    "urgent"
+  ],
+  "pattern_applied": "chain",
+  "success_indicators": [
+    "task_completed",
+    "no_followup_needed",
+    "user_satisfied"
+  ]
+}

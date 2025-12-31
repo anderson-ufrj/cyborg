@@ -2,22 +2,26 @@
 # SENSITIVE DATA - DO NOT COMMIT
 # ===========================================
 
-# Personal Anthropic export (contains PII)
-data/anthropic_export/
+# Raw data (contains PII - screenshots, exports)
+data/00_raw/
 
-# Screenshots (personal screen captures)
-data/screenshots/
-
-# OCR results from screenshots
-data/ocr_results/
-
-# Private backup (original non-anonymized data for validation)
-data/private_backup/
+# Private backup (original non-anonymized data)
+data/_private/
 data/*CONFIDENTIAL*
 
-# Large datasets (link to original sources instead)
+# Large external datasets
 data/DevGPT_full/
 data/DevGPT/
+
+# ===========================================
+# Reference Materials (too large for repo)
+# ===========================================
+reference/
+
+# ===========================================
+# Archive (old versions, drafts)
+# ===========================================
+archive/
 
 # ===========================================
 # LaTeX Build Artifacts
@@ -51,6 +55,7 @@ venv/
 env/
 *.egg-info/
 .eggs/
+*.pkl
 
 # ===========================================
 # IDE / Editor
@@ -70,11 +75,6 @@ env/
 *.bak
 
 # ===========================================
-# Old/archived versions
-# ===========================================
-.old/
-
-# ===========================================
 # Draft/WIP PDFs (only Zenodo preprint is public)
 # ===========================================
 *.pdf
@@ -84,4 +84,3 @@ env/
 # Claude Code internal files
 # ===========================================
 .claude/
-draft-v1.md

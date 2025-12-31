@@ -47,7 +47,7 @@ Minas Gerais, Brasil\\
 \texttt{ORCID: 0009-0001-7144-4974}
 }
 
-\date{December 2025}
+\date{December 2025\\[0.5em]\small Version 0.2}
 
 \begin{document}
 
@@ -67,7 +67,7 @@ The emergence of AI-powered coding assistants---GitHub Copilot, Claude Code, Cur
 
 Current research on AI coding assistants falls into two categories. First, \textit{productivity studies} measure output metrics---lines of code, task completion time, bug rates---treating the developer as a black box whose internal processes are irrelevant as long as outputs improve \citep{peng2023impact}. Second, \textit{perception studies} rely on self-reported experiences, asking developers how they \textit{feel} about AI tools rather than observing what they \textit{do} with them \citep{barke2023grounded}. Neither approach captures the cognitive reality of sustained human-AI collaboration.
 
-Da Silva \citep{silva2025dmmf} demonstrated that cognitive patterns can be systematically inferred from software artifacts such as commits, code structure, and documentation. Analyzing repositories and commits over extended periods, such frameworks reveal how static artifacts encode developer cognition through multiple dimensions: cognitive (problem-solving patterns), affective (emotional traces in code), conative (motivational indicators), and reflective (self-awareness in documentation). However, artifact-based analysis captures only the \textit{output} of cognitive processes---the committed code---not the \textit{process} itself.
+Building on prior work analyzing developer cognition through repository artifacts \citep{silva2025dmmf}, we extend the methodological approach from static artifact analysis to dynamic interaction analysis. The Developer Mental Model Framework (DMMF) demonstrated that commits, code structure, and documentation encode developer cognition through multiple dimensions: cognitive (problem-solving patterns), affective (emotional traces in code), conative (motivational indicators), and reflective (self-awareness in documentation). However, artifact-based analysis captures only the \textit{output} of cognitive processes---the committed code---not the \textit{process} itself. DMMF captures cognitive residue---what remains after thinking; the present study captures cognitive process---thinking as it happens, distributed across human and AI.
 
 This paper extends artifact-based analysis to interaction analysis. We ask: \textbf{What cognitive patterns emerge when we observe not the products of development, but the moment-to-moment collaboration between developer and AI?}
 
@@ -159,9 +159,7 @@ Sweller's cognitive load theory \citep{sweller1988cognitive} distinguishes intri
 
 \subsubsection{Developer Mental Models}
 
-Da Silva \citep{silva2025dmmf} demonstrated that cognitive patterns can be inferred from software artifacts through analysis of repositories and commits, identifying multiple dimensions of developer cognition including cognitive, affective, conative, and reflective patterns.
-
-The present study extends artifact-based analysis to interaction analysis, capturing not what developers produce but how they produce it through human-AI collaboration.
+Prior work on developer mental models \citep{silva2025dmmf} established that cognitive patterns can be inferred from software artifacts through analysis of repositories and commits, identifying multiple dimensions including cognitive, affective, conative, and reflective patterns. This artifact-based approach provides the methodological foundation that the present study extends from retrospective artifact analysis to concurrent interaction analysis---capturing not what developers produce but how they produce it through human-AI collaboration.
 
 \subsection{Extended Cognition}
 
@@ -174,6 +172,18 @@ Clark and Chalmers \citep{clark1998extended} argued that cognitive processes can
 \subsubsection{Distributed Cognition}
 
 Hutchins \citep{hutchins1995cognition} studied cognition in complex sociotechnical systems (airplane cockpits, ship navigation). Software development with AI assistants represents a new form of distributed cognition---human and AI as a cognitive unit.
+
+\subsection{Theoretical Positioning: Beyond Existing Frameworks}
+
+Before presenting our methodology, we clarify how this work relates to---and extends---existing theoretical frameworks. A legitimate concern is whether studying human-AI collaboration requires new conceptual vocabulary or whether existing frameworks suffice.
+
+\textbf{Beyond Distributed Cognition}: Hutchins' \citep{hutchins1995cognition} distributed cognition describes how cognitive processes spread across people and artifacts in sociotechnical systems. However, Hutchins studied \textit{static} tool configurations (navigation instruments, cockpit displays) where the distribution is architecturally fixed. Human-AI programming involves \textit{adaptive} systems where the distribution is dynamically negotiated---developers actively manage cognitive distribution in real-time through model selection and task-specific delegation. This adaptive dimension is not addressed by classical distributed cognition.
+
+\textbf{Beyond Extended Mind}: Clark and Chalmers' \citep{clark1998extended} extended mind thesis establishes that cognition can extend into the environment, but treats extension as binary (extended or not) and focuses on \textit{passive} cognitive artifacts (Otto's notebook). AI coding assistants are \textit{active} cognitive partners that reason, generate, and adapt. We operationalize extension as a \textit{continuous spectrum} (our delegation score) rather than a binary state.
+
+\textbf{Beyond Automation Levels}: Parasuraman et al.'s \citep{parasuraman2000model} levels of automation framework provides useful vocabulary (information acquisition, analysis, decision, action) but assumes fixed automation levels per system. Modern AI assistants operate at variable automation levels within a single session---sometimes gathering information autonomously, sometimes awaiting explicit instruction. Our framework captures this \textit{within-session variability}.
+
+These limitations motivate our empirical investigation: we need data on how cognitive distribution actually occurs in practice before theorizing further.
 
 \subsection{Research Gap}
 
@@ -340,6 +350,8 @@ D = \frac{\sum_{c \in C} p_c \cdot w_c}{\sum_{c \in C} p_c}
 \end{equation}
 
 Where $p_c$ is the percentage of tool uses in category $c$, and $w_c$ is the delegation weight (1.0 for high, 0.5 for medium/variable, 0.0 for low). A score approaching 1.0 indicates high AI delegation; approaching 0.0 indicates human-heavy workflow.
+
+\textbf{Execution Weight Rationale}: We assign Execution (Bash, Task) a weight of 0.5 rather than 1.0 despite its substantial proportion (35.8\%) because Bash commands represent a heterogeneous category spanning the full delegation spectrum. Simple verification commands (e.g., \texttt{ls}, \texttt{git status}, \texttt{pwd}) represent minimal cognitive delegation---the developer knows what to check and merely uses AI as interface. Conversely, complex multi-step operations (e.g., build pipelines, test suites, deployment scripts) represent substantial delegation where AI autonomously manages operational complexity. Without finer-grained command classification---which we leave for future work---the 0.5 weight represents a conservative middle estimate. Our sensitivity analysis (Table~\ref{tab:sensitivity}, ``Execution=High'' row) demonstrates this choice is consequential: treating Execution as full delegation yields $D = 0.83$. We report the conservative 0.71 estimate while acknowledging that actual delegation may be higher if Bash usage is predominantly complex operations.
 
 \subsubsection{Sensitivity Analysis}
 \label{sec:sensitivity}

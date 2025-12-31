@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-12-30T08:51:51.718056",
+  "prompt_tokens": 180,
+  "response_tokens": 320,
+  "response_time_ms": 1341,
+  "quality_score": 0.7443801866266802,
+  "iteration_count": 1,
+  "context_used": [
+    "anderson-skill",
+    "code-review",
+    "technical"
+  ],
+  "pattern_applied": "evaluator",
+  "success_indicators": [
+    "task_completed",
+    "minor_followup_needed"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "7bd52faf",
+  "timestamp": "2025-12-31T10:17:47.373477",
+  "session_id": "7e0caba8-106a-4664-9c30-f236fe113b38",
+  "tool_use_id": "toolu_01CdDrZ7mwV9fK3ruXcRqh5h",
+  "tool_name": "AskUserQuestion",
+  "tool_category": "interaction",
+  "permission_mode": "default",
+  "cwd": "/home/anderson-henrique/Documentos/prompt-engineering",
+  "project": "prompt-engineering",
+  "input_keys": [
+    "questions",
+    "answers"
+  ],
+  "input_tokens_est": 327,
+  "output_tokens_est": 327,
+  "total_tokens_est": 654,
+  "success": true,
+  "success_indicators": [
+    "return_code_zero"
+  ],
+  "context_hints": [],
+  "pattern_applied": null,
+  "quality_score": 75,
+  "iteration_count": 1,
+  "transcript_path": "/home/anderson-henrique/.claude/projects/-home-anderson-henrique-Documentos-prompt-engineering/7e0caba8-106a-4664-9c30-f236fe113b38.jsonl",
+  "collector_version": "2.0.0"
+}
